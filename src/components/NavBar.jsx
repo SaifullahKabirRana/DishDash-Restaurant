@@ -15,8 +15,8 @@ export default function Navbar() {
     </>
 
     return (
-        <nav className="relative bg-white uppercase ">
-            <div className="container px-6 py-4 mx-auto lg:flex lg:justify-between lg:items-center">
+        <nav className=" text-white fixed  z-50 w-full bg-[#15151580] uppercase">
+            <div className=" max-w-[1920px] px-6 md:px-8 lg:px-10 xl:px-14 p-1 lg:py-2  lg:flex lg:justify-between lg:items-center">
                 {/* Logo */}
                 <div className="flex items-center justify-between">
                     <div className="flex flex-col  font-cinzel ">
@@ -29,18 +29,18 @@ export default function Navbar() {
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             type="button"
-                            className="text-gray-500  hover:text-gray-600 focus:outline-none"
+                            className="text-white  hover:opacity-80 focus:outline-none"
                             aria-label="toggle menu"
                         >
                             {!isOpen ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                 </svg>
 
                             ) : (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="w-6 h-6"
+                                    className="w-7 h-7"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -59,7 +59,7 @@ export default function Navbar() {
 
                 {/* Menu Items */}
                 <div
-                    className={`absolute inset-x-0 z-50 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white  lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:flex lg:items-center ${isOpen
+                    className={`absolute bg-[#15151580] inset-x-0 z-50 w-full px-6 md:px-8  py-4 transition-all duration-300 ease-in-out   lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:flex lg:items-center ${isOpen
                         ? "translate-x-0 opacity-100"
                         : "opacity-0 -translate-x-full lg:opacity-100 lg:translate-x-0"
                         }`}
@@ -67,7 +67,7 @@ export default function Navbar() {
                     <div  className=" lg:mx-6 ">
                         <ul
                         id="nav"
-                        className="flex flex-col lg:flex-row gap-4 my-2 text-gray-700 transition-colors duration-300 transform  lg:mx-6 xl:mx-8 lg:my-0 font-inter font-semibold  ">
+                        className="flex flex-col lg:flex-row gap-2 lg:gap-3 xl:gap-4 my-2 text-white transition-colors duration-300 transform  lg:mx-6 xl:mx-8 lg:my-0 font-inter font-semibold  text-sm xl:text-base  ">
                             {navLinks}
                         </ul>
                     </div>
@@ -76,7 +76,7 @@ export default function Navbar() {
                     <div className="flex justify-center items-center gap-3 ">
                     <Link
                             to=''
-                            className="relative text-gray-700 transition-colors duration-300 transform hover:text-gray-600 "
+                            className="relative text-white transition-colors duration-300 transform hover:opacity-80 "
                         >
                             <svg
                                 className="w-7 h-7"
@@ -89,11 +89,11 @@ export default function Navbar() {
                                     stroke="currentColor"
                                     strokeWidth="2"
                                     strokeLinecap="round"
-                                    strokeLinejoin="round"
+                                    strokeLinejoin="round" 
                                 />
                             </svg>
 
-                            <span className="absolute w-4 h-4 -top-1 -left-1 text-center  text-xs text-white bg-blue-500 rounded-full ">{1}</span>
+                            <span className="absolute w-4 h-4 -top-1 -left-1 text-center  text-[10px] text-white bg-blue-500 rounded-full ">{1}</span>
                         </Link>
                         <div>
                             <img className="w-10" src={profile} alt="" />

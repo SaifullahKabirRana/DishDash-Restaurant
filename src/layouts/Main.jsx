@@ -5,8 +5,9 @@ import 'flowbite';
 const Main = () => {
     return (
         <div>
-            <NavBar></NavBar>
-            <div>
+
+            <div >
+                <NavBar></NavBar>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
