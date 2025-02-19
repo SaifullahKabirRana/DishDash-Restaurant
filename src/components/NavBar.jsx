@@ -59,7 +59,7 @@ export default function Navbar() {
 
                 {/* Menu Items */}
                 <div
-                    className={`absolute bg-[#15151580] inset-x-0 z-50 w-full px-6 md:px-8  py-4 transition-all duration-300 ease-in-out   lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:flex lg:items-center ${isOpen
+                    className={`absolute bg-[#15151580] inset-x-0 z-50 w-full px-6 md:px-8 my-1 py-3 transition-all duration-300 ease-in-out   lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:flex lg:items-center ${isOpen
                         ? "translate-x-0 opacity-100"
                         : "opacity-0 -translate-x-full lg:opacity-100 lg:translate-x-0"
                         }`}
