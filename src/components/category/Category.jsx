@@ -10,7 +10,11 @@ import slide1 from '../../assets/assets/home/slide1.jpg'
 import slide2 from '../../assets/assets/home/slide2.jpg'
 import slide3 from '../../assets/assets/home/slide3.jpg'
 import slide4 from '../../assets/assets/home/slide4.jpg'
-import slide5 from '../../assets/assets/home/slide5.jpg'
+import slide5 from '../../assets/assets/menu/Burger.png'
+import slide6 from '../../assets/assets/home/biriyani.png'
+import slide7 from '../../assets/assets/home/chicken.png'
+import slide8 from '../../assets/assets/home/meat.png'
+
 import SectionTitle from '../SectionTitle';
 
 const Category = () => {
@@ -24,7 +28,7 @@ const Category = () => {
             </div>
             <div className='pt-6 md:pt-8 lg:pt-10 xl:pt-14 pb-8 md:pb-12 lg:pb-14 xl:pb-20'>
                 <div className='w-full flex justify-center px-6 md:px-0'>
-                    <div className='max-h-[300px] md:max-h-full max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[750px] xl:max-w-[1020px] 2xl:max-w-[1320px] font-cinzel uppercase text-white'>
+                    <div className='max-h-[300px] md:max-h-[350px] lg:max-h-full max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[750px] xl:max-w-[1020px] 2xl:max-w-[1320px] font-cinzel uppercase text-white'>
                         <Swiper
                             slidesPerView={1}
                             spaceBetween={10}
@@ -37,7 +41,7 @@ const Category = () => {
                                     spaceBetween: 10,
                                 },
                                 '@0.75': {
-                                    slidesPerView: 2,
+                                    slidesPerView: 3,
                                     spaceBetween: 20,
                                 },
                                 '@1.00': {
@@ -74,7 +78,19 @@ const Category = () => {
 
                             <SwiperSlide className='flex flex-col'>
                                 <img src={slide5} alt="" />
-                                <h2 className='relative -top-10 lg:-top-15 text-lg md:text-xl lg:text-2xl '>Salads</h2>
+                                <h2 className='relative -top-10 lg:-top-15 text-lg md:text-xl lg:text-2xl '>Burgers</h2>
+                            </SwiperSlide>
+                            <SwiperSlide className='flex flex-col'>
+                                <img src={slide6} alt="" />
+                                <h2 className='relative -top-10 lg:-top-15 text-lg md:text-xl lg:text-2xl '>Biryani</h2>
+                            </SwiperSlide>
+                            <SwiperSlide className='flex flex-col'>
+                                <img src={slide7} alt="" />
+                                <h2 className='relative -top-10 lg:-top-15 text-lg md:text-xl lg:text-2xl '>Chickens</h2>
+                            </SwiperSlide>
+                            <SwiperSlide className='flex flex-col'>
+                                <img src={slide8} alt="" />
+                                <h2 className='relative -top-10 lg:-top-15 text-lg md:text-xl lg:text-2xl '>Beefs</h2>
                             </SwiperSlide>
 
                         </Swiper>
