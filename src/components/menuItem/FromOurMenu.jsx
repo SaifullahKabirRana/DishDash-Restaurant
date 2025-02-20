@@ -11,7 +11,7 @@ const FromOurMenu = () => {
 
     const getData = async () => {
         try {
-            const { data } = await axios(`menu.json`)
+            const { data } = await axios(`/menu.json`)
             const popularItems = data.filter(item => item.category === 'popular');
             setMenus(popularItems);
         }

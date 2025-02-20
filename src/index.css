@@ -37,7 +37,7 @@
 /* For screens 1920px and larger */
 @media (min-width: 1920px) {
   .carousel * {
-    max-height: 800px; /* Height for 1920px and larger screens */
+    max-height: 870px; /* Height for 1920px and larger screens */
   }
 }
 

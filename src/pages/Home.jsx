@@ -3,6 +3,7 @@ import Category from "../components/category/Category";
 import Contact from "../components/Contact";
 import Description from "../components/Description";
 import FromOurMenu from "../components/menuItem/FromOurMenu";
+import Recommends from "../components/Recommends";
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             <Description></Description>
             <FromOurMenu></FromOurMenu>
             <Contact></Contact>
+            <Recommends></Recommends>
         </div>
     );
 };
