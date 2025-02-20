@@ -1,8 +1,8 @@
 import bgImg from '../assets/assets/home/chef-service.jpg'
 const Description = () => {
     return (
-        <div className='w-full flex justify-center pb-12 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-28'>
-            <div className='max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[750px] xl:max-w-[1020px] 2xl:max-w-[1320px] px-6 md:px-0'>
+        <div className='w-full flex justify-center '>
+            <div className='max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[820px] xl:max-w-[1020px] 2xl:max-w-[1320px] px-6 md:px-0'>
                 <div
                 style={{backgroundImage: `url(${bgImg})`}}
                 className="h-[260px] md:h-[360px] lg:h-[420px] xl:h-[500px] 2xl:h-[550px] bg-cover bg-center">

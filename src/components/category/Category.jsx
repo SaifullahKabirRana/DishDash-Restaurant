@@ -26,9 +26,9 @@ const Category = () => {
                 heading={'ORDER ONLINE'}
                 ></SectionTitle>
             </div>
-            <div className='pt-6 md:pt-8 lg:pt-10 xl:pt-14 pb-8 md:pb-12 lg:pb-14 xl:pb-20'>
+            <div className=' pb-8 md:pb-12 lg:pb-14 xl:pb-20'>
                 <div className='w-full flex justify-center px-6 md:px-0'>
-                    <div className='max-h-[300px] md:max-h-[350px] lg:max-h-full max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[750px] xl:max-w-[1020px] 2xl:max-w-[1320px] font-cinzel uppercase text-white'>
+                    <div className='max-h-[300px] md:max-h-[350px] lg:max-h-full max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[820px] xl:max-w-[1020px] 2xl:max-w-[1320px] font-cinzel uppercase text-white'>
                         <Swiper
                             slidesPerView={1}
                             spaceBetween={10}
