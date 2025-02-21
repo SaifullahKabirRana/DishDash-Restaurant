@@ -1,0 +1,16 @@
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #444444;
+
+}
+
+:root {
+    --swiper-navigation-size: 35px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 960px) {
+    :root {
+        --swiper-navigation-size: 25px;
+    }
+}

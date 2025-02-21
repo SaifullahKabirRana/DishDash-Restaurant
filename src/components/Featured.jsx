@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import bgImg from '../assets/assets/home/featured.jpg'
-import SectionTitle from './SectionTitle';
+
 const Featured = () => {
     return (
-        <div className='mb-20 mt-8 md:mt-12 lg:mt-14 xl:mt-16 2xl:mt-20'>
+        <div className=' mt-8 md:mt-12 lg:mt-14 xl:mt-16 2xl:mt-20'>
             <div
                 style={{ backgroundImage: `url(${bgImg})` }}
                 className='bg-fixed bg-cover bg-center bg-no-repeat '
