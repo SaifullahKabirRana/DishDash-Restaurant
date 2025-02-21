@@ -24,7 +24,6 @@ const FromOurMenu = () => {
         getData();
     }, []);
 
-    console.log('menusssss:', menus);
     return (
         <div>
             <div>

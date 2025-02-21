@@ -2,19 +2,19 @@
     {
       "_id": 1,
       "name": "Grilled Salmon with Lemon Butter",
-      "photo": "../src/assets/assets/menu/salmon.png",
+      "photo": "https://i.ibb.co.com/ynGWWKD5/salmon.png",
       "recipe": "Freshly grilled salmon topped with lemon butter sauce, served with seasonal vegetables."
     },
     {
       "_id": 2,
       "name": "Classic Margherita Pizza",
-      "photo": "../src/assets/assets/menu/ClassicMargheritaPizza.png",
+      "photo": "https://i.ibb.co.com/Q35X0037/Classic-Margherita-Pizza.png",
       "recipe": "Hand-tossed dough topped with fresh mozzarella, tomatoes, and basil, baked to perfection."
     },
     {
       "_id": 3,
       "name": "Creamy Chicken Alfredo Pasta",
-      "photo": "../src/assets/assets/menu/CreamyChickenAlfredoPasta.png",
+      "photo": "https://i.ibb.co.com/YB5yjZLX/Creamy-Chicken-Alfredo-Pasta.png",
       "recipe": "Tender chicken breast in a rich, creamy Alfredo sauce served over fettuccine pasta."
     }
   ]

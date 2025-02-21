@@ -2,6 +2,7 @@ import Banner from "../components/Banner";
 import Category from "../components/category/Category";
 import Contact from "../components/Contact";
 import Description from "../components/Description";
+import Featured from "../components/Featured";
 import FromOurMenu from "../components/menuItem/FromOurMenu";
 import Recommends from "../components/Recommends";
 
@@ -15,6 +16,7 @@ const Home = () => {
             <FromOurMenu></FromOurMenu>
             <Contact></Contact>
             <Recommends></Recommends>
+            <Featured></Featured>
         </div>
     );
 };
