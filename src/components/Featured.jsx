@@ -6,7 +6,7 @@ const Featured = () => {
         <div className='mb-20 mt-8 md:mt-12 lg:mt-14 xl:mt-16 2xl:mt-20'>
             <div
                 style={{ backgroundImage: `url(${bgImg})` }}
-                className=' bg-cover bg-center bg-no-repeat '
+                className='bg-fixed bg-cover bg-center bg-no-repeat '
             >
                 <div className='w-full flex justify-center pb-6 md:pb-12 lg:pb-16 xl:pb-20 2xl:pb-24 bg-[#151515B3]'>
                     <div className='max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[820px] xl:max-w-[1020px] 2xl:max-w-[1320px] px-6 md:px-0 '>
