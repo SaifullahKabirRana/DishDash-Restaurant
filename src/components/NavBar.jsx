@@ -9,7 +9,7 @@ export default function Navbar() {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/contact'>CONTACT us</NavLink></li>
         <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
-        <li><NavLink to='/our-menu'>Our Menu</NavLink></li>
+        <li><NavLink to='/menu'>Our Menu</NavLink></li>
         <li><NavLink to='/our-shop'>Our Shop</NavLink></li>
         <li><NavLink to='/login'>SIGN OUT</NavLink></li>
     </>

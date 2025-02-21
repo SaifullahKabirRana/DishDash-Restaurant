@@ -22,8 +22,8 @@ const Category = () => {
         <div>
             <div>
                 <SectionTitle
-                subHeading={'---From 11:00am to 10:00pm---'}
-                heading={'ORDER ONLINE'}
+                    subHeading={'---From 11:00am to 10:00pm---'}
+                    heading={'ORDER ONLINE'}
                 ></SectionTitle>
             </div>
             <div className=' pb-8 md:pb-12 lg:pb-14 xl:pb-20'>
