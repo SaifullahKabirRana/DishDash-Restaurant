@@ -1,6 +1,6 @@
 
-const MenuItem = ({ menu }) => {
-    const { name, image, recipe, price } = menu;
+const MenuItem = ({ item }) => {
+    const { name, image, recipe, price } = item;
     return (
         <div>
             <div className="flex justify-center items-center gap-3 md:gap-5 lg:gap-3 xl:gap-7">
