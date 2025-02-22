@@ -5,7 +5,7 @@ const MenuItem = ({ item }) => {
         <div>
             <div className="flex justify-center items-center gap-3 md:gap-5 lg:gap-3 xl:gap-7">
                 <div>
-                    <img className="h-[70px] md:h-[70px] lg:h-[80px] xl:h-[90px] w-[100px] md:w-[95px] 2xl:h-[104px]  lg:w-[105px] xl:w-[130px] 2xl:w-[118px] rounded-tl-[0px] rounded-tr-[200px] rounded-br-[200px] rounded-bl-[200px] object-cover object-right" src={image} alt="" />
+                    <img className="h-[75px] md:h-[80px] lg:h-[90px] xl:h-[100px] 2xl:h-[105px] max-w-[60px] md:max-w-[70px] lg:max-w-[80px] xl:max-w-[100px] 2xl:max-w-[90px] rounded-tl-[0px] rounded-tr-[200px] rounded-br-[200px] rounded-bl-[200px] object-cover object-right" src={image} alt="" />
                 </div>
                 <div className="flex gap-1 xl:gap-2">
                     <div  className="flex flex-col gap-1 xl:gap-2">

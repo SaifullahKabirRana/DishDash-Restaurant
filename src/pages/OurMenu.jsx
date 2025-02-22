@@ -30,7 +30,7 @@ const OurMenu = () => {
             {/* offer section */}
             <div>
                 <SectionTitle subHeading={"---Don't miss---"} heading={"TODAY'S OFFER"}></SectionTitle>
-                <MenuCategory desserts=></MenuCategory>
+                <MenuCategory items={offered} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
             </div>
 
         </div>

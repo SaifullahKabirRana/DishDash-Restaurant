@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import MenuItem from "../menuItem/MenuItem";
 
-const MenuCategory = ({items}) => {
+const MenuCategory = ({items, btnTitle}) => {
     return (
         <div>
             <div className="w-full flex justify-center">
@@ -16,7 +16,7 @@ const MenuCategory = ({items}) => {
                     </div>
                     <div className="flex justify-center mt-5 md:mt-6 lg:mt-8 xl:mt-10">
                         <Link>
-                            <button className=" btn btn-sm md:btn-md border-t-0 border-l-0 border-r-0 lg:px-6 bg-white text-[#1F2937] font-inter text-sm md:text-base lg:text-lg xl:tex-xl border-b-2 border-[#1F2937] rounded-xl uppercase  hover:opacity-85 ">View Full Menu</button>
+                            <button className=" btn btn-sm md:btn-md border-t-0 border-l-0 border-r-0 bg-white text-[#1F2937] font-inter text-sm md:text-base lg:text-lg  border-b-2 border-[#1F2937] rounded-xl uppercase  hover:opacity-85 ">{btnTitle}</button>
                         </Link>
                     </div>
                 </div>

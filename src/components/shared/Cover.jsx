@@ -8,7 +8,7 @@ const Cover = ({ bgImg, height, paddingY, heading, subHeading, upperWord }) => {
 
     return (
         <div>
-            <div className="pb-20 -ml-[1px]">
+            <div className=" -ml-[1px]">
                 <Parallax
                     blur={{ min: -30, max: 30 }}
                     bgImage={bgImg}
