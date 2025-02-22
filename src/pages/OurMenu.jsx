@@ -1,6 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import Cover from "../components/shared/Cover";
 import bgImg from '../assets/assets/menu/banner3.jpg'
+import dessertBg from '../assets/assets/menu/dessert-bg.jpeg'
+import pizzaBg from '../assets/assets/menu/pizza-bg.jpg'
+import saladBg from '../assets/assets/menu/salad-bg.jpg'
+import soupBg from '../assets/assets/menu/soup-bg.jpg'
 import useMenu from "../hooks/useMenu";
 import SectionTitle from "../components/SectionTitle";
 import MenuCategory from "../components/OurMenu/MenuCategory";
@@ -32,7 +36,22 @@ const OurMenu = () => {
                 <SectionTitle subHeading={"---Don't miss---"} heading={"TODAY'S OFFER"}></SectionTitle>
                 <MenuCategory items={offered} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
             </div>
-
+            {/* deserts sections */}
+            <div>
+                <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
+                    <Cover
+                        bgImg={dessertBg}
+                        height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
+                        paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
+                        heading={'DESSERTS'}
+                        subHeading={'Satisfy your cravings with our heavenly selection of desserts. From rich, creamy cheesecakes to delightful chocolate treats, every bite is a taste of pure joy. Perfectly crafted to end your meal on a sweet note!'}
+                        upperWord={'normal-case'}
+                    ></Cover>
+                </div>
+                <div>
+                    <MenuCategory items={desserts} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                </div>
+            </div>
         </div>
     );
 };
