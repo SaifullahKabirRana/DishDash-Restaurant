@@ -20,7 +20,7 @@ const OurMenu = () => {
             <Helmet>
                 <title>DishDash - Menu</title>
             </Helmet>
-            {/*  */}
+            {/* menu cover */}
             <div>
                 <Cover
                     bgImg={bgImg}
@@ -36,7 +36,7 @@ const OurMenu = () => {
                 <SectionTitle subHeading={"---Don't miss---"} heading={"TODAY'S OFFER"}></SectionTitle>
                 <MenuCategory items={offered} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
             </div>
-            {/* deserts sections */}
+            {/* deserts section */}
             <div>
                 <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
                     <Cover
@@ -50,6 +50,37 @@ const OurMenu = () => {
                 </div>
                 <div>
                     <MenuCategory items={desserts} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                </div>
+            </div>
+            {/* pizza section */}
+            <div>
+                <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
+                    <Cover
+                        bgImg={pizzaBg}
+                        height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
+                        paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
+                        heading={'PIZZA'}
+                        subHeading={'Enjoy our freshly baked pizzas loaded with the finest ingredients and bursting with flavor. From classic Margherita to loaded meat feasts, our pizzas are made to perfection with crispy crusts and gooey cheese.'}
+                    ></Cover>
+                </div>
+                <div>
+                    <MenuCategory items={pizzas} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                </div>
+            </div>
+            {/* soups section */}
+            <div>
+                <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
+                    <Cover
+                        bgImg={soupBg}
+                        height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
+                        paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
+                        heading={'SOUPS'}
+                        subHeading={'Savor the rich flavors of our handcrafted soups, made with fresh ingredients and slow-cooked to perfection. From creamy mushroom to classic chicken broth, our soups are perfect for a cozy and satisfying meal.'}
+                        upperWord={'normal-case'}
+                    ></Cover>
+                </div>
+                <div>
+                    <MenuCategory items={soups} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
                 </div>
             </div>
         </div>
