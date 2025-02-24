@@ -3,17 +3,26 @@ import Cover from "../components/shared/Cover";
 import orderBg from '../assets/assets/shop/banner2.jpg';
 import 'react-tabs/style/react-tabs.css';
 import { useState } from "react";
-import '../index.css';
+import useMenu from "../hooks/useMenu";
+import FoodCard from "../components/FoodCard";
+
 
 const OrderFood = () => {
     const [tabIndex, setTabIndex] = useState(0);
+    const [menu] = useMenu();
+    const desserts = menu.filter(item => item.category === 'dessert');
+    const drinks = menu.filter(item => item.category === 'drinks');
+    const pizzas = menu.filter(item => item.category === 'pizza');
+    const salads = menu.filter(item => item.category === 'salad');
+    const soups = menu.filter(item => item.category === 'soup');
     const tabs = ["Salad", "Pizza", "Soups", "Desserts", "Drinks"];
     const tabContents = [
-        "Salad",
-        "Pizza",
-        "Soups",
-        "Desserts",
-        "Drinks"
+        <FoodCard key='salads' items={salads}></FoodCard>,
+        <FoodCard key='pizzas' items={pizzas}></FoodCard>,
+        <FoodCard key='soups' items={soups}></FoodCard>,
+        <FoodCard key='desserts' items={desserts}></FoodCard>,
+        <FoodCard key='drinks' items={drinks}></FoodCard>,
+        
     ];
 
 
@@ -43,18 +52,17 @@ const OrderFood = () => {
                                 <button
                                     key={index}
                                     onClick={() => setTabIndex(index)}
-                                    className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  sm:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
+                                    className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  lg:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
                                     ${tabIndex === index && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}
                                     `}>{tab}</button>
                             ))
                         }
                     </div>
                 </div>
-                <div className="mt-10 flex justify-center items-center">
+                <div className="mt-7 md:mt-8 xl:mt-10 2xl:mt-12 flex justify-center items-center">
                     <div>
                         {tabContents[tabIndex]}
                     </div>
-
                 </div>
             </div>
         </div>
