@@ -21,7 +21,7 @@ const useMenu = () => {
         }
         getData();
 
-    }, [])
+    }, [axiosCommon])
     return [menu, loading]
 
 };

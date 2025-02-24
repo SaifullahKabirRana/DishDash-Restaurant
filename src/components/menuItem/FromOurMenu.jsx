@@ -29,7 +29,7 @@ const FromOurMenu = () => {
                         }
                     </div>
                     <div className="flex justify-center mt-5 md:mt-6 lg:mt-8 xl:mt-10">
-                        <Link>
+                        <Link to='/menu'>
                             <button className=" btn btn-sm md:btn-md border-t-0 border-l-0 border-r-0 lg:px-6 bg-white text-[#1F2937] font-inter text-sm md:text-base lg:text-lg xl:tex-xl border-b-2 border-[#1F2937] rounded-xl uppercase  hover:opacity-85 ">View Full Menu</button>
                         </Link>
                     </div>
