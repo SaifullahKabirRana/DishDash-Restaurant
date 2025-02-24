@@ -1,14 +1,17 @@
-import axios from "axios";
+
 import { useEffect, useState } from "react";
+import useAxiosCommon from "./useAxiosCommon";
 
 const useMenu = () => {
+    const axiosCommon = useAxiosCommon();
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
+    
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const { data } = await axios('/menu.json')
+                const { data } = await axiosCommon(`/menu`);
                 setMenu(data);
                 setLoading(false);
             }
