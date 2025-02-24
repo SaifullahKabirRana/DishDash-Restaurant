@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const FoodCard = ({items}) => {
+const FoodCard = ({ items }) => {
     return (
         <div>
             <div className="w-full flex justify-center">
@@ -11,7 +11,7 @@ const FoodCard = ({items}) => {
                                 <div key={menu._id}>
                                     <div className="">
                                         <div>
-                                            <div className="absolute bg-[#111827] text-white font-inter text-xs md:text-sm xl:text-base font-semibold py-2 px-3 flex">${menu.price}</div>
+                                            <div className="absolute bg-[#111827] text-white font-inter text-xs md:text-sm xl:text-base font-semibold py-2 px-3">${menu.price}</div>
                                             <img className="w-full  h-[220px] xl:h-[250px] 2xl:h-[290px]" src={menu.image} alt="" />
                                         </div>
                                         <div className="bg-[#F3F3F3] ">

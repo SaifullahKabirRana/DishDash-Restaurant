@@ -5,22 +5,28 @@ import 'react-tabs/style/react-tabs.css';
 import { useState } from "react";
 import useMenu from "../hooks/useMenu";
 import FoodCard from "../components/FoodCard";
+import { useParams } from "react-router-dom";
 
 
 const OrderFood = () => {
-    const [tabIndex, setTabIndex] = useState(0);
+    const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
+    const {category} = useParams();
+    const initialIndex = categories.indexOf(category);
+    const [tabIndex, setTabIndex] = useState(initialIndex);
     const [menu] = useMenu();
-    const desserts = menu.filter(item => item.category === 'dessert');
+    
+    console.log(category);
+    const dessert = menu.filter(item => item.category === 'dessert');
     const drinks = menu.filter(item => item.category === 'drinks');
-    const pizzas = menu.filter(item => item.category === 'pizza');
-    const salads = menu.filter(item => item.category === 'salad');
-    const soups = menu.filter(item => item.category === 'soup');
-    const tabs = ["Salad", "Pizza", "Soups", "Desserts", "Drinks"];
+    const pizza = menu.filter(item => item.category === 'pizza');
+    const salad = menu.filter(item => item.category === 'salad');
+    const soup = menu.filter(item => item.category === 'soup');
+    const tabs = ["Salad", "Pizza", "Soup", "Dessert", "Drinks"];
     const tabContents = [
-        <FoodCard key='salads' items={salads}></FoodCard>,
-        <FoodCard key='pizzas' items={pizzas}></FoodCard>,
-        <FoodCard key='soups' items={soups}></FoodCard>,
-        <FoodCard key='desserts' items={desserts}></FoodCard>,
+        <FoodCard key='salad' items={salad}></FoodCard>,
+        <FoodCard key='pizza' items={pizza}></FoodCard>,
+        <FoodCard key='soup' items={soup}></FoodCard>,
+        <FoodCard key='dessert' items={dessert}></FoodCard>,
         <FoodCard key='drinks' items={drinks}></FoodCard>,
         
     ];

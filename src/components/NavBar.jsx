@@ -8,7 +8,7 @@ export default function Navbar() {
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/menu'>Our Menu</NavLink></li>
-        <li><NavLink to='/order'>Order Food</NavLink></li>
+        <li><NavLink to='/order/salad'>Order Food</NavLink></li>
         <li><NavLink to='/contact'>CONTACT us</NavLink></li>
         <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
         <li><NavLink to='/login'>SIGN OUT</NavLink></li>

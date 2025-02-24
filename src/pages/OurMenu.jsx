@@ -10,11 +10,12 @@ import SectionTitle from "../components/SectionTitle";
 import MenuCategory from "../components/OurMenu/MenuCategory";
 const OurMenu = () => {
     const [menu] = useMenu();
-    const desserts = menu.filter(item => item.category === 'dessert');
+   
+    const dessert = menu.filter(item => item.category === 'dessert');
     const offered = menu.filter(item => item.category === 'offered');
-    const pizzas = menu.filter(item => item.category === 'pizza');
-    const salads = menu.filter(item => item.category === 'salad');
-    const soups = menu.filter(item => item.category === 'soup');
+    const pizza = menu.filter(item => item.category === 'pizza');
+    const salad = menu.filter(item => item.category === 'salad');
+    const soup = menu.filter(item => item.category === 'soup');
     return (
         <div>
             <Helmet>
@@ -34,7 +35,7 @@ const OurMenu = () => {
             {/* offer section */}
             <div>
                 <SectionTitle subHeading={"---Don't miss---"} heading={"TODAY'S OFFER"}></SectionTitle>
-                <MenuCategory items={offered} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                <MenuCategory items={offered}></MenuCategory>
             </div>
             {/* deserts section */}
             <div>
@@ -43,13 +44,13 @@ const OurMenu = () => {
                         bgImg={dessertBg}
                         height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
                         paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
-                        heading={'DESSERTS'}
+                        heading={'dessert'}
                         subHeading={'Satisfy your cravings with our heavenly selection of desserts. From rich, creamy cheesecakes to delightful chocolate treats, every bite is a taste of pure joy. Perfectly crafted to end your meal on a sweet note!'}
                         upperWord={'normal-case'}
                     ></Cover>
                 </div>
                 <div>
-                    <MenuCategory items={desserts} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                    <MenuCategory category={'dessert'} items={dessert}></MenuCategory>
                 </div>
             </div>
             {/* pizza section */}
@@ -59,43 +60,43 @@ const OurMenu = () => {
                         bgImg={pizzaBg}
                         height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
                         paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
-                        heading={'PIZZA'}
+                        heading={'pizza'}
                         subHeading={'Enjoy our freshly baked pizzas loaded with the finest ingredients and bursting with flavor. From classic Margherita to loaded meat feasts, our pizzas are made to perfection with crispy crusts and gooey cheese.'}
                     ></Cover>
                 </div>
                 <div>
-                    <MenuCategory items={pizzas} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                    <MenuCategory category={'pizza'} items={pizza}></MenuCategory>
                 </div>
             </div>
-            {/* salads section */}
+            {/* salad section */}
             <div>
                 <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
                     <Cover
                         bgImg={saladBg}
                         height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
                         paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
-                        heading={'SALADS'}
+                        heading={'salad'}
                         subHeading={'Our salads are a perfect mix of crisp greens, vibrant veggies, and delicious dressings. Whether you prefer a light Caesar or a protein-packed Greek salad, we have something fresh and healthy just for you.'}
                     ></Cover>
                 </div>
                 <div>
-                    <MenuCategory items={salads} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                    <MenuCategory category={'salad'} items={salad}></MenuCategory>
                 </div>
             </div>
-            {/* soups section */}
+            {/* soup section */}
             <div className="pb-6 md:pb-7 lg:pb-8 xl:pb-10 2xl:pb-12">
                 <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
                     <Cover
                         bgImg={soupBg}
                         height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
                         paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
-                        heading={'SOUPS'}
+                        heading={'soup'}
                         subHeading={'Savor the rich flavors of our handcrafted soups, made with fresh ingredients and slow-cooked to perfection. From creamy mushroom to classic chicken broth, our soups are perfect for a cozy and satisfying meal.'}
                         upperWord={'normal-case'}
                     ></Cover>
                 </div>
                 <div>
-                    <MenuCategory items={soups} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                    <MenuCategory category={'soup'} items={soup}></MenuCategory>
                 </div>
             </div>
         </div>
