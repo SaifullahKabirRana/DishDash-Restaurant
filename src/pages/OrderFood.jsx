@@ -7,6 +7,14 @@ import '../index.css';
 
 const OrderFood = () => {
     const [tabIndex, setTabIndex] = useState(0);
+    const tabs = ["Salad", "Pizza", "Soups", "Desserts", "Drinks"];
+    const tabContents = [
+        "Salad",
+        "Pizza",
+        "Soups",
+        "Desserts",
+        "Drinks"
+    ];
 
 
     return (
@@ -27,60 +35,26 @@ const OrderFood = () => {
             </div>
 
             {/* Tabs */}
-            <div className=" flex justify-center px-6 md:px-0  mt-8 md:mt-10 lg:mt-12 xl:mt-20">
-                <div className="flex overflow-x-auto overflow-y-hidden whitespace-nowrap font-inter ">
-                    <button onClick={() => setTabIndex(0)} className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  sm:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
-                        ${tabIndex === 0 && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}
-                        `}>
-                        Salad 
+            <div>
+                <div className=" flex justify-center px-6 md:px-0  mt-8 md:mt-10 lg:mt-12 xl:mt-20">
+                    <div className="flex overflow-x-auto overflow-y-hidden scrollbar-hide whitespace-nowrap font-inter ">
+                        {
+                            tabs.map((tab, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setTabIndex(index)}
+                                    className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  sm:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
+                                    ${tabIndex === index && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}
+                                    `}>{tab}</button>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div className="mt-10 flex justify-center items-center">
+                    <div>
+                        {tabContents[tabIndex]}
+                    </div>
 
-                    </button>
-                    <button onClick={() => setTabIndex(1)} className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  sm:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
-                        ${tabIndex === 1 && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}`}>
-                        pizza
-                    </button>
-                    <button onClick={() => setTabIndex(2)} className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  sm:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
-                        ${tabIndex === 2 && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}
-                        `}>
-                        soups
-                    </button>
-                    <button onClick={() => setTabIndex(3)} className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  sm:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
-                        ${tabIndex === 3 && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}
-                        `}>
-                        desserts
-                    </button>
-                    <button onClick={() => setTabIndex(4)} className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  sm:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
-                        ${tabIndex === 4 && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}
-                        `}>
-                        drinks
-                    </button>
-                </div>
-            </div>
-            <div className="mt-10 flex justify-center items-center">
-                <div>
-                    {
-                        tabIndex === 0 ? <div>hi profile</div> : ''
-                    }
-                </div>
-                <div>
-                    {
-                        tabIndex === 1 ? <div>hi account</div> : ''
-                    }
-                </div>
-                <div>
-                    {
-                        tabIndex === 2 ? <div>hi Notification</div> : ''
-                    }
-                </div>
-                <div>
-                    {
-                        tabIndex === 3 ? <div>hi Notification</div> : ''
-                    }
-                </div>
-                <div>
-                    {
-                        tabIndex === 4 ? <div>hi Notification</div> : ''
-                    }
                 </div>
             </div>
         </div>
