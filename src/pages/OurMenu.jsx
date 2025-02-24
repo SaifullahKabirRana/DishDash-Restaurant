@@ -67,8 +67,23 @@ const OurMenu = () => {
                     <MenuCategory items={pizzas} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
                 </div>
             </div>
-            {/* soups section */}
+            {/* salads section */}
             <div>
+                <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
+                    <Cover
+                        bgImg={saladBg}
+                        height={'h-[220px] md:h-[370px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'}
+                        paddingY={'py-8 md:py-16 lg:py-20 xl:py-28 2xl:py-32 '}
+                        heading={'SALADS'}
+                        subHeading={'Our salads are a perfect mix of crisp greens, vibrant veggies, and delicious dressings. Whether you prefer a light Caesar or a protein-packed Greek salad, we have something fresh and healthy just for you.'}
+                    ></Cover>
+                </div>
+                <div>
+                    <MenuCategory items={salads} btnTitle={'ORDER YOUR FAVOURITE FOOD'}></MenuCategory>
+                </div>
+            </div>
+            {/* soups section */}
+            <div className="pb-6 md:pb-7 lg:pb-8 xl:pb-10 2xl:pb-12">
                 <div className="py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16">
                     <Cover
                         bgImg={soupBg}

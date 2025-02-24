@@ -7,10 +7,10 @@ export default function Navbar() {
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/menu'>Our Menu</NavLink></li>
+        <li><NavLink to='/order'>Order Food</NavLink></li>
         <li><NavLink to='/contact'>CONTACT us</NavLink></li>
         <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
-        <li><NavLink to='/menu'>Our Menu</NavLink></li>
-        <li><NavLink to='/our-shop'>Our Shop</NavLink></li>
         <li><NavLink to='/login'>SIGN OUT</NavLink></li>
     </>
 
@@ -64,17 +64,17 @@ export default function Navbar() {
                         : "opacity-0 -translate-x-full lg:opacity-100 lg:translate-x-0"
                         }`}
                 >
-                    <div  className=" lg:mx-6 ">
+                    <div className=" lg:mx-6 ">
                         <ul
-                        id="nav"
-                        className="flex flex-col lg:flex-row gap-2 lg:gap-3 xl:gap-4 my-2 text-white transition-colors duration-300 transform  lg:mx-6 xl:mx-8 lg:my-0 font-inter font-semibold  text-sm xl:text-base  ">
+                            id="nav"
+                            className="flex flex-col lg:flex-row gap-2 lg:gap-3 xl:gap-4 my-2 text-white transition-colors duration-300 transform  lg:mx-6 xl:mx-8 lg:my-0 font-inter font-semibold  text-sm xl:text-base  ">
                             {navLinks}
                         </ul>
                     </div>
 
                     {/* Cart Icon */}
                     <div className="flex justify-center items-center gap-3 ">
-                    <Link
+                        <Link
                             to=''
                             className="relative text-white transition-colors duration-300 transform hover:opacity-80 "
                         >
@@ -89,7 +89,7 @@ export default function Navbar() {
                                     stroke="currentColor"
                                     strokeWidth="2"
                                     strokeLinecap="round"
-                                    strokeLinejoin="round" 
+                                    strokeLinejoin="round"
                                 />
                             </svg>
 
@@ -98,7 +98,7 @@ export default function Navbar() {
                         <div>
                             <img className="w-10" src={profile} alt="" />
                         </div>
-                       
+
                     </div>
                 </div>
             </div>

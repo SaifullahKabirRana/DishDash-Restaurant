@@ -8,6 +8,7 @@
 }
 
 
+
 /* for navbar color theme */
 #nav a.active {
 
@@ -40,4 +41,5 @@
     max-height: 870px; /* Height for 1920px and larger screens */
   }
 }
+
 
