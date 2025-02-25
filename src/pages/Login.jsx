@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import bgImg from '../assets/assets/others/authentication.png'
 import loginImg from '../assets/assets/others/authentication2.png'
 import SocialLogin from '../components/SocialLogin';
+import { useState } from 'react';
+import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    
     return (
         <div
-            className='h-screen w-full  flex justify-center items-center px-6 md:px-0 '
+            className='h-screen w-full  flex justify-center items-center px-4 md:px-0 '
             style={{ backgroundImage: `url(${bgImg})` }}
         >
             <div className='shadow-[10px_10px_10px_10px_rgba(0,0,0,0.25)] w-full py-8 md:py-10 md:w-[600px] lg:w-[850px] xl:w-[1200px] 2xl:w-[1400px] md:h-[700px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px]'>
@@ -16,7 +20,7 @@ const Login = () => {
                     </div>
                     <div className='w-full md:px-20 lg:px-10 xl:px-14 2xl:px-20'>
                         <h2 className='text-center text-[#151515] font-bold text-2xl'>Login</h2>
-                        <form className="">
+                        <form >
                             <div>
                                 <label
                                     htmlFor="email"
@@ -28,7 +32,7 @@ const Login = () => {
                                     type="text"
                                     name='email'
                                     placeholder='Type here'
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
+                                    className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
                                 />
                             </div>
                             <div className="mt-4">
@@ -46,12 +50,20 @@ const Login = () => {
                                         Forget Password?
                                     </a>
                                 </div>
+                                <div className='relative flex items-center '>
                                 <input
-                                    type="password"
+                                    type={showPassword? 'text' : 'password'}
                                     name='password'
                                     placeholder='Enter your password'
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
+                                    className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
                                 />
+                                <span
+                                    className="absolute right-5 pt-1 text-lg md:text-xl "
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <VscEyeClosed></VscEyeClosed> : <VscEye></VscEye>}
+                                </span>
+                                </div>
                             </div>
                             <div className="mt-6">
                                 <input type="submit" value="Sign In"
@@ -60,9 +72,9 @@ const Login = () => {
                             </div>
                         </form>
 
-                        <div className='flex flex-col justify-center items-center'>
+                        <div className='flex flex-col justify-center items-center pt-4 '>
                             <Link  to='/register'>
-                            <h2 className='pt-4 xl:pt-6 text-[#D1A054] text-sm xl:text-base text-center inter font-medium'>New here? <span className='font-bold hover:link focus:link '>Create a New Account</span></h2>
+                            <h2 className='xl:pt-6 text-[#D1A054] text-sm xl:text-base text-center inter font-medium  '>New here? <span className='font-bold  hover:underline active:underline'>Create a New Account</span></h2>
                             </Link>
                             <p className='text-[#444444] inter font-medium text-sm xl:text-base pt-3 xl:pt-5 text-center'>Or sign in with</p>
                             <SocialLogin></SocialLogin>
