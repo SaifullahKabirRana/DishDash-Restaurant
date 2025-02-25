@@ -4,7 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
     return (
         <div className="">
-            <div className="flex ">
+            <div className="flex inter">
                 <div className="bg-[#1F2937] w-full ">
                     <div className="py-14 md:py-16 lg:py-24  text-center">
                         <h3 className="text-white text-lg md:text-2xl xl:text-3xl font-medium ">CONTACT US</h3>

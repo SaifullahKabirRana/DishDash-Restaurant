@@ -35,13 +35,13 @@ const Recommends = () => {
                                         <div>
                                             <img className="w-full  h-[220px] xl:h-[250px] 2xl:h-[290px]" src={menu.photo} alt="" />
                                         </div>
-                                        <div className="bg-[#F3F3F3] ">
-                                            <div className="flex flex-col font-inter text-center py-5 md:py-6 xl:py-7 2xl:py-8 ">
+                                        <div className="bg-[#F3F3F3] lg:min-h-[200px] xl:min-h-[220px]">
+                                            <div className="flex flex-col inter text-center py-5 md:py-6 xl:py-7 2xl:py-8 px-4 lg:px-1 xl:px-4 2xl:px-6">
                                                 <h2 className="text-[#151515] text-base md:text-base xl:text-xl font-semibold ">{menu.name}</h2>
-                                                <p className="text-[#151515] text-xs xl:text-sm mt-1 xl:mt-2 mb-4 xl:mb-5 px-4 lg:px-2 xl:px-4 2xl:px-6">{menu.recipe}</p>
+                                                <p className="text-[#151515] text-xs xl:text-sm mt-1 xl:mt-2 mb-4 xl:mb-5 ">{menu.recipe}</p>
                                                 <div>
                                                     <Link>
-                                                        <button className=" btn btn-sm md:btn-md border-t-0 border-l-0 border-r-0  bg-[#E8E8E8] text-[#BB8506] font-inter text-sm md:text-base lg:text-lg xl:tex-xl border-b-2 border-[#1F2937] rounded-xl uppercase  hover:bg-[#1F2937] hover:border-none focus:bg-[#1F2937] focus:border-none mt-1">add to cart</button>
+                                                        <button className=" btn btn-sm md:btn-md border-t-0 border-l-0 border-r-0  bg-[#E8E8E8] text-[#BB8506] inter text-sm md:text-base  border-b-2 border-[#1F2937] rounded-xl uppercase  hover:bg-[#1F2937] hover:border-none focus:bg-[#1F2937] focus:border-none mt-1">add to cart</button>
                                                     </Link>
                                                 </div>
                                             </div>

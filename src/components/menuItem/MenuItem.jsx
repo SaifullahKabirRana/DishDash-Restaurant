@@ -9,13 +9,13 @@ const MenuItem = ({ item }) => {
                 </div>
                 <div className="flex-1">
                     <div className="flex flex-col gap-1 xl:gap-2">
-                        <h2 className="text-[#151515] font-cinzel text-base md:text-lg xl:text-xl uppercase">{name} </h2>
-                        <p className="text-[#737373] font-inter text-xs md:text-base lg:text-sm xl:text-base">{recipe}</p>
+                        <h2 className="text-[#151515] cinzel text-base md:text-lg xl:text-xl uppercase">{name} </h2>
+                        <p className="text-[#737373] inter text-xs md:text-base lg:text-sm xl:text-base">{recipe}</p>
                     </div>
                     
                 </div>
                 <div className="">
-                        <p className="text-[#BB8506] font-inter text-base md:text-lg lg:text-lg xl:text-xl">${price}</p>
+                        <p className="text-[#BB8506] inter text-base md:text-lg lg:text-lg xl:text-xl">${price}</p>
                     </div>
             </div>
         </div>

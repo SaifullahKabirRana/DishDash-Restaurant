@@ -2,11 +2,13 @@
 @plugin "daisyui";
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-@theme {
-  --font-inter: Inter, serif;
-  --font-cinzel: Cinzel, serif;
+.cinzel {
+  font-family: "Cinzel", serif;
 }
 
+.inter {
+  font-family: "Inter", sans-serif;
+}
 
 
 /* for navbar color theme */

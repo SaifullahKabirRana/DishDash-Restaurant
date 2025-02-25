@@ -65,8 +65,8 @@ const Testimonials = () => {
                                                 <img src={vector} alt="" />
                                             </div>
                                             <div>
-                                                <p className="text-[#444444] text-sm md:text-base lg:text-lg xl:text-xl font-inter mt-3 md:mt-4 xl:mt-6 mb-1 xl:mb-2 px-4 md:px-0">{review.details}</p>
-                                                <h2 className="uppercase text-[#CD9003] text-xl md:text-2xl xl:text-3xl">{review.name}</h2>
+                                                <p className="text-[#444444] text-sm md:text-base xl:text-lg  inter mt-3 md:mt-4 xl:mt-6 mb-1 xl:mb-2 px-4 md:px-0">{review.details}</p>
+                                                <h2 className="uppercase text-[#CD9003] text-lg md:text-xl xl:text-2xl font-medium">{review.name}</h2>
                                             </div>
                                         </div>
                                     </SwiperSlide>)

@@ -52,13 +52,13 @@ const OrderFood = () => {
             {/* Tabs */}
             <div>
                 <div className=" flex justify-center px-6 md:px-0  mt-8 md:mt-10 lg:mt-12 xl:mt-20">
-                    <div className="flex overflow-x-auto overflow-y-hidden scrollbar-hide whitespace-nowrap font-inter ">
+                    <div className="flex overflow-x-auto  whitespace-nowrap inter ">
                         {
                             tabs.map((tab, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setTabIndex(index)}
-                                    className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  lg:text-base  whitespace-nowrap focus:outline-none uppercase text-[#151515] font-medium hover:text-[#bb850669]
+                                    className={`inline-flex items-center h-10 px-3 lg:px-4 text-sm text-center  lg:text-base whitespace-nowrap focus:outline-none uppercase font-semibold text-[#151515]  hover:text-[#bb850669]
                                     ${tabIndex === index && 'text-[#BB8506] bg-transparent border-b-3 border-[#BB8506] font-bold'}
                                     `}>{tab}</button>
                             ))

@@ -16,10 +16,10 @@ export default function Navbar() {
 
     return (
         <nav className=" text-white fixed  z-50 w-full bg-[#15151580] uppercase">
-            <div className=" max-w-[1920px] px-6 md:px-8 lg:px-10 xl:px-14 p-1 lg:py-2  lg:flex lg:justify-between lg:items-center">
+            <div className=" max-w-[2560px] px-6 md:px-8 lg:px-10 xl:px-14 p-1 lg:py-2  lg:flex lg:justify-between lg:items-center">
                 {/* Logo */}
                 <div className="flex items-center justify-between">
-                    <div className="flex flex-col  font-cinzel ">
+                    <div className="flex flex-col cinzel ">
                         <h2 className=" text-xl md:text-2xl xl:text-3xl font-extrabold ">DishDash</h2>
                         <p className="text-xs md:text-sm xl:text-lg tracking-[3px] md:tracking-[4px] font-semibold">Restaurant</p>
                     </div>
@@ -67,7 +67,7 @@ export default function Navbar() {
                     <div className=" lg:mx-6 ">
                         <ul
                             id="nav"
-                            className="flex flex-col lg:flex-row gap-2 lg:gap-3 xl:gap-4 my-2 text-white transition-colors duration-300 transform  lg:mx-6 xl:mx-8 lg:my-0 font-inter font-semibold  text-sm xl:text-base  ">
+                            className="flex flex-col lg:flex-row gap-2 lg:gap-3 xl:gap-4 my-2 text-white transition-colors duration-300 transform  lg:mx-6 xl:mx-8 lg:my-0 inter font-semibold  text-sm xl:text-base  ">
                             {navLinks}
                         </ul>
                     </div>
