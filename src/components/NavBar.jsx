@@ -11,7 +11,7 @@ export default function Navbar() {
         <li><NavLink to='/order/salad'>Order Food</NavLink></li>
         <li><NavLink to='/contact'>CONTACT us</NavLink></li>
         <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
-        <li><NavLink to='/login'>SIGN OUT</NavLink></li>
+        <li><NavLink to='/login'>SIGN IN</NavLink></li>
     </>
 
     return (

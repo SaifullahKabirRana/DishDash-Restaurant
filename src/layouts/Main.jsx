@@ -1,16 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import 'flowbite';
 const Main = () => {
+    const location = useLocation();
+    const noNavbarFooter = location.pathname.includes('login');
     return (
         <div>
-
-            <div >
-                <NavBar></NavBar>
-                <Outlet></Outlet>
-            </div>
-            <Footer></Footer>
+            {noNavbarFooter || <NavBar></NavBar>}
+            <Outlet></Outlet>
+            {noNavbarFooter || <Footer></Footer>}
         </div>
     );
 };
