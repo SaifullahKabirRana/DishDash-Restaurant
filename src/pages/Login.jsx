@@ -1,6 +1,8 @@
 
+import { Link } from 'react-router-dom';
 import bgImg from '../assets/assets/others/authentication.png'
 import loginImg from '../assets/assets/others/authentication2.png'
+import SocialLogin from '../components/SocialLogin';
 const Login = () => {
     return (
         <div
@@ -18,21 +20,22 @@ const Login = () => {
                             <div>
                                 <label
                                     htmlFor="email"
-                                    className="block text-sm text-gray-800"
+                                    className="block text-sm xl:text-base  text-[#444444] font-semibold"
                                 >
                                     Email
                                 </label>
                                 <input
                                     type="text"
+                                    name='email'
                                     placeholder='Type here'
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border-[#D0D0D0] rounded-lg   focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
                                 />
                             </div>
                             <div className="mt-4">
                                 <div className="flex items-center justify-between">
                                     <label
                                         htmlFor="password"
-                                        className="block text-sm text-gray-800 "
+                                        className="block text-sm xl:text-base  text-[#444444] font-semibold "
                                     >
                                         Password
                                     </label>
@@ -45,15 +48,25 @@ const Login = () => {
                                 </div>
                                 <input
                                     type="password"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg  focus:border-blue-400focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    name='password'
+                                    placeholder='Enter your password'
+                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
                                 />
                             </div>
                             <div className="mt-6">
-                                <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize   rounded-lg bg-[#D1A054B3] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                                    Sign In
-                                </button>
+                                <input type="submit" value="Sign In"
+                                    className="btn w-full  text-sm xl:text-base font-bold tracking-wide text-white capitalize   rounded-lg bg-[#D1A054B3] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                                />
                             </div>
                         </form>
+
+                        <div className='flex flex-col justify-center items-center'>
+                            <Link  to='/register'>
+                            <h2 className='pt-4 xl:pt-6 text-[#D1A054] text-sm xl:text-base text-center inter font-medium'>New here? <span className='font-bold hover:link focus:link '>Create a New Account</span></h2>
+                            </Link>
+                            <p className='text-[#444444] inter font-medium text-sm xl:text-base pt-3 xl:pt-5 text-center'>Or sign in with</p>
+                            <SocialLogin></SocialLogin>
+                        </div>
 
                     </div>
                 </div>
