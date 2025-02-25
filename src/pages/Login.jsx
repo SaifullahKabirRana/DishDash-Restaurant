@@ -6,15 +6,15 @@ import SocialLogin from '../components/SocialLogin';
 const Login = () => {
     return (
         <div
-            className='h-screen w-full  flex justify-center items-center '
+            className='h-screen w-full  flex justify-center items-center px-6 md:px-0 '
             style={{ backgroundImage: `url(${bgImg})` }}
         >
-            <div className='shadow-[10px_10px_10px_10px_rgba(0,0,0,0.25)] w-[1400px] h-[700px]'>
-                <div className='flex flex-col lg:flex-row justify-center  gap-24 px-32 py-20 inter'>
-                    <div className='py-20'>
-                        <img className='w-[1000px] h-[350px]' src={loginImg} alt="login" />
+            <div className='shadow-[10px_10px_10px_10px_rgba(0,0,0,0.25)] w-full py-8 md:py-10 md:w-[600px] lg:w-[850px] xl:w-[1200px] 2xl:w-[1400px] md:h-[700px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px]'>
+                <div className='flex flex-col lg:flex-row justify-center lg:gap-0 xl:gap-16 2xl:gap-24 px-4 md:px-0 lg:px-6 xl:px-24 2xl:px-32 lg:py-12 xl:py-16 2xl:py-20 inter'>
+                    <div className='py-4 md:py-6 lg:py-20 flex justify-center '>
+                        <img className='w-[270px] md:w-[300px] lg:w-[650px] xl:w-[800px] 2xl:w-[1000px] h-[180px] md:h-[200px] lg:h-[260px] xl:h-[300px] 2xl:h-[350px]' src={loginImg} alt="login" />
                     </div>
-                    <div className='w-full px-20'>
+                    <div className='w-full md:px-20 lg:px-10 xl:px-14 2xl:px-20'>
                         <h2 className='text-center text-[#151515] font-bold text-2xl'>Login</h2>
                         <form className="">
                             <div>
