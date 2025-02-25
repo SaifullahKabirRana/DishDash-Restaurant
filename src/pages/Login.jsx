@@ -5,7 +5,7 @@ import loginImg from '../assets/assets/others/authentication2.png'
 import SocialLogin from '../components/SocialLogin';
 import { useEffect, useState } from 'react';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -58,7 +58,7 @@ const Login = () => {
                                     type="text"
                                     name='email'
                                     placeholder='Type here'
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
+                                    className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm placeholder:font-normal"
                                 />
                             </div>
                             <div className="mt-3 xl:mt-4">
@@ -71,7 +71,7 @@ const Login = () => {
                                     </label>
                                     <a
                                         href="#"
-                                        className="text-xs text-gray-600  hover:underline"
+                                        className="text-xs text-gray-600  hover:underline active:underline"
                                     >
                                         Forget Password?
                                     </a>
@@ -81,7 +81,7 @@ const Login = () => {
                                         type={showPassword ? 'text' : 'password'}
                                         name='password'
                                         placeholder='Enter your password'
-                                        className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
+                                        className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm placeholder:font-normal"
                                     />
                                     <span
                                         className="absolute right-5 pt-1 text-lg md:text-xl "
@@ -103,7 +103,7 @@ const Login = () => {
                                     onChange={(e) => setCaptchaInput(e.target.value)}
                                     onBlur={handleValidateCaptcha}
                                     placeholder='Type here'
-                                    className="block w-full px-4 py-2  text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
+                                    className="block w-full px-4 py-2  text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm placeholder:font-normal"
                                 />
                                 {captchaValid === false && <p className="text-red-500 text-xs pl-2 mt-1">Invalid Captcha, please try again.</p>}
                             </div>
