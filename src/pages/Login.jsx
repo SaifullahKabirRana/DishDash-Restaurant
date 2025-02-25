@@ -9,10 +9,30 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [captchaInput, setCaptchaInput] = useState("");
+    const [captchaValid, setCaptchaValid] = useState(null);
 
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const captcha = form.captcha.value;
+        console.log(email,password, captcha);
+    }
+
+    const handleValidateCaptcha = () =>{
+        if(validateCaptcha(captchaInput)){
+            setCaptchaValid(true);
+        }
+        else{
+            setCaptchaValid(false);
+        }
+    }
 
     return (
         <div
@@ -26,7 +46,7 @@ const Login = () => {
                     </div>
                     <div className='w-full md:px-20 lg:px-10 xl:px-14 2xl:px-20'>
                         <h2 className='text-center text-[#151515] font-bold text-2xl'>Login</h2>
-                        <form >
+                        <form onSubmit={handleLogin}>
                             <div>
                                 <label
                                     htmlFor="email"
@@ -79,13 +99,20 @@ const Login = () => {
                                 <input
                                     type="text"
                                     name='captcha'
+                                    value={captchaInput}
+                                    onChange={(e) => setCaptchaInput(e.target.value)}
+                                    onBlur={handleValidateCaptcha}
                                     placeholder='Type here'
                                     className="block w-full px-4 py-2  text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm"
                                 />
+                                {captchaValid === false && <p className="text-red-500 text-xs pl-2 mt-1">Invalid Captcha, please try again.</p>}
                             </div>
                             <div className="mt-5 xl:mt-6">
                                 <input type="submit" value="Sign In"
-                                    className="btn w-full  text-sm xl:text-base font-bold tracking-wide text-white capitalize   rounded-lg bg-[#D1A054B3] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                                    disabled={!captchaValid}
+                                    className={`btn w-full text-sm xl:text-base font-bold tracking-wide text-white capitalize rounded-lg ${
+                                        captchaValid ? "bg-[#D1A054]" : "bg-[#D1A054B3] cursor-not-allowed"
+                                      } focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50`}
                                 />
                             </div>
                         </form>
