@@ -5,12 +5,15 @@ import loginImg from '../assets/assets/others/authentication2.png'
 import SocialLogin from '../components/SocialLogin';
 import { useEffect, useState } from 'react';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
-import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import useAuth from '../hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [captchaInput, setCaptchaInput] = useState("");
     const [captchaValid, setCaptchaValid] = useState(null);
+    const { signIn } = useAuth();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -22,14 +25,24 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         const captcha = form.captcha.value;
-        console.log(email,password, captcha);
+        console.log(email, password, captcha);
+
+        try {
+            const result = await signIn(email, password);
+            console.log(result.user);
+            toast.success('SignIn Successfully')
+        }
+        catch (err) {
+            console.log(err);
+            toast.error(err.code);
+        }
     }
 
-    const handleValidateCaptcha = () =>{
-        if(validateCaptcha(captchaInput)){
+    const handleValidateCaptcha = () => {
+        if (validateCaptcha(captchaInput)) {
             setCaptchaValid(true);
         }
-        else{
+        else {
             setCaptchaValid(false);
         }
     }
@@ -93,7 +106,7 @@ const Login = () => {
                             </div>
                             {/* captcha */}
                             <div className='mt-3 xl:mt-4 block w-full px-4 py-2  text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 text-sm'>
-                                <LoadCanvasTemplate  />
+                                <LoadCanvasTemplate />
                             </div>
                             <div className='mt-3 xl:mt-4'>
                                 <input
@@ -110,9 +123,8 @@ const Login = () => {
                             <div className="mt-5 xl:mt-6">
                                 <input type="submit" value="Sign In"
                                     disabled={!captchaValid}
-                                    className={`btn w-full text-sm xl:text-base font-bold tracking-wide text-white capitalize rounded-lg ${
-                                        captchaValid ? "bg-[#D1A054]" : "bg-[#D1A054B3] cursor-not-allowed"
-                                      } focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50`}
+                                    className={`btn w-full text-sm xl:text-base font-bold tracking-wide text-white capitalize rounded-lg ${captchaValid ? "bg-[#D1A054]" : "bg-[#D1A054B3] cursor-not-allowed"
+                                        } focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50`}
                                 />
                             </div>
                         </form>
