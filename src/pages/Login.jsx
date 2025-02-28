@@ -108,7 +108,7 @@ const Login = () => {
                                 </div>
                                 <div className='mt-2 ml-2'>
                                     {
-                                        loginError && <p className="text-[12px] md:text-[15px] text-red-500">{registerError}</p>
+                                        loginError && <p className="text-[12px] md:text-[15px] text-red-500">{loginError}</p>
                                     }
                                 </div>
                             </div>
