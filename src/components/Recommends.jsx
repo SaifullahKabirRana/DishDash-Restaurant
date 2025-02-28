@@ -9,7 +9,7 @@ const Recommends = () => {
     const getData = async () => {
         try {
             const { data } = await axios(`/recommend.json`)
-            setMenus(data);
+            setMenus(Array.isArray(data) ? data : []);
         }
         catch (err) {
             console.log(err);

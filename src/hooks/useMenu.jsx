@@ -12,7 +12,7 @@ const useMenu = () => {
         const getData = async () => {
             try {
                 const { data } = await axiosCommon(`/menu`);
-                setMenu(data);
+                setMenu(Array.isArray(data)? data: []);
                 setLoading(false);
             }
             catch (err) {

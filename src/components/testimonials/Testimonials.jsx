@@ -19,7 +19,7 @@ const Testimonials = () => {
         const getData = async () => {
             try {
                 const { data } = await axios('/reviews.json');
-                setReviews(data);
+                setReviews(Array.isArray(data) ? data : []);
             }
             catch (err) {
                 console.log(err);
@@ -54,7 +54,7 @@ const Testimonials = () => {
                                         <div className="flex flex-col justify-center items-center">
                                             <div className="w-[100px] md:w-[120px] lg:w-[130px] xl:w-[150px]">
                                                 <Rating
-                                                
+
                                                     style={{ maxWidth: 180 }}
                                                     value={review.rating}
                                                     readOnly
