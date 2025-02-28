@@ -13,6 +13,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [captchaInput, setCaptchaInput] = useState("");
     const [captchaValid, setCaptchaValid] = useState(null);
+    const [loginError, setLoginError] = useState(true);
     const { signIn } = useAuth();
 
     useEffect(() => {
@@ -27,6 +28,8 @@ const Login = () => {
         const captcha = form.captcha.value;
         console.log(email, password, captcha);
 
+        setLoginError('');
+
         try {
             const result = await signIn(email, password);
             console.log(result.user);
@@ -34,7 +37,7 @@ const Login = () => {
         }
         catch (err) {
             console.log(err);
-            toast.error(err.code);
+            setLoginError('password not match!');
         }
     }
 
@@ -102,6 +105,11 @@ const Login = () => {
                                     >
                                         {showPassword ? <VscEyeClosed></VscEyeClosed> : <VscEye></VscEye>}
                                     </span>
+                                </div>
+                                <div className='mt-2 ml-2'>
+                                    {
+                                        loginError && <p className="text-[12px] md:text-[15px] text-red-500">{registerError}</p>
+                                    }
                                 </div>
                             </div>
                             {/* captcha */}
