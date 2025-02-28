@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import bgImg from '../assets/assets/others/authentication.png'
 import loginImg from '../assets/assets/others/authentication2.png'
 import SocialLogin from '../components/SocialLogin';
@@ -10,11 +10,13 @@ import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
 
 const Login = () => {
+    const { signIn } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [captchaInput, setCaptchaInput] = useState("");
     const [captchaValid, setCaptchaValid] = useState(null);
     const [loginError, setLoginError] = useState(true);
-    const { signIn } = useAuth();
+    const navigate = useNavigate();
+    
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -33,7 +35,8 @@ const Login = () => {
         try {
             const result = await signIn(email, password);
             console.log(result.user);
-            toast.success('SignIn Successfully')
+            toast.success('SignIn Successfully');
+            navigate('/');
         }
         catch (err) {
             console.log(err);

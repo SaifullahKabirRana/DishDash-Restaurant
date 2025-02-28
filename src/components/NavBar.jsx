@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import profile from '../assets/assets/profile.png'
+import useAuth from "../hooks/useAuth";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const {user, logOut} = useAuth();
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -11,7 +13,12 @@ export default function Navbar() {
         <li><NavLink to='/order/salad'>Order Food</NavLink></li>
         <li><NavLink to='/contact'>CONTACT us</NavLink></li>
         <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
-        <li><NavLink to='/login'>SIGN IN</NavLink></li>
+        {
+            user ? 
+            <li onClick={logOut}><NavLink>SIGN OUT</NavLink></li>
+            :
+            <li><NavLink to='/login'>SIGN IN</NavLink></li>
+        }
     </>
 
     return (
