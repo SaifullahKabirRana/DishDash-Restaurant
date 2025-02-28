@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import bgImg from '../assets/assets/others/authentication.png'
 import loginImg from '../assets/assets/others/authentication2.png'
 
@@ -12,6 +12,8 @@ const Register = () => {
     const { createUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [registerError, setRegisterError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
 
 
     const handleSignUp = async (e) => {
@@ -39,6 +41,7 @@ const Register = () => {
             const result = await createUser(email, password);
             console.log(result.user);
             toast.success('SignUp Successfully');
+            navigate(location?.state? location.state : '/' )('/');
         }
         catch (err) {
             console.log(err);
