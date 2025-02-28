@@ -22,6 +22,17 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, email, password);
 
+        // Password Authentication
+        if (password.length < 6) {
+            return setRegisterError('password should be at least 6 characters or longer')
+        }
+        else if (!/[A-Z]/.test(password)) {
+            return setRegisterError('password should have at least one upper case character')
+        }
+        else if (!/[a-z]/.test(password)) {
+            return setRegisterError('password should have at least one lower case character')
+        }
+
         setRegisterError('');
 
         try {
