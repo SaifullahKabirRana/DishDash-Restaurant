@@ -5,7 +5,9 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
     const { user, loading } = useAuth();
     if (loading) {
-        return
+        return <div className="flex justify-center mt-60 md:mt-72 xl:mt-96">
+            <span className="loader"></span>
+        </div>
     }
     if (user) {
         return children;
