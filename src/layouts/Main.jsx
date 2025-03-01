@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import 'flowbite';
 const Main = () => {
     const location = useLocation();
-    const noNavbarFooter = location.pathname.includes('login');
+    const noNavbarFooter = location.pathname.includes('login') || location.pathname.includes('register');
     return (
         <div>
             {noNavbarFooter || <NavBar></NavBar>}
