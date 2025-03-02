@@ -1,6 +1,30 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import Swal from 'sweetalert2'
 
 const FoodCard = ({ items }) => {
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const handleAddToCart = food => {
+        if (user && user?.email) {
+            // send cart item to the database
+        }
+        else {
+            Swal.fire({
+                title: "You are not Logged In",
+                text: "Please login to add to the cart!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#D1A054",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, login!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login');
+                }
+            });
+        }
+    }
     return (
         <div>
             <div className="w-full flex justify-center">
@@ -19,9 +43,9 @@ const FoodCard = ({ items }) => {
                                                 <h2 className="text-[#151515] text-base md:text-base xl:text-xl font-semibold ">{menu.name}</h2>
                                                 <p className="text-[#151515] text-xs xl:text-sm mt-1 xl:mt-2 mb-4 xl:mb-5 px-4 lg:px-2 xl:px-4 2xl:px-6">{menu.recipe}</p>
                                                 <div>
-                                                    <Link>
-                                                        <button className=" btn btn-sm md:btn-md border-t-0 border-l-0 border-r-0  bg-[#E8E8E8] text-[#BB8506] inter text-sm md:text-base border-b-2 border-[#1F2937] rounded-xl uppercase  hover:bg-[#1F2937] hover:border-none focus:bg-[#1F2937] focus:border-none mt-1">add to cart</button>
-                                                    </Link>
+                                                    <button
+                                                        onClick={() => handleAddToCart(menu)}
+                                                        className=" btn btn-sm md:btn-md border-t-0 border-l-0 border-r-0  bg-[#E8E8E8] text-[#BB8506] inter text-sm md:text-base border-b-2 border-[#1F2937] rounded-xl uppercase  hover:bg-[#1F2937] hover:border-none focus:bg-[#1F2937] focus:border-none mt-1">add to cart</button>
                                                 </div>
                                             </div>
                                         </div>

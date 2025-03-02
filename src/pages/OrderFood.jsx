@@ -50,7 +50,7 @@ const OrderFood = () => {
             </div>
 
             {/* Tabs */}
-            <div>
+            <div className="pb-8 md:pb-12 xl:pb-16 2xl:pb-20">
                 <div className=" flex justify-center px-6 md:px-0  mt-8 md:mt-10 lg:mt-12 xl:mt-20">
                     <div className="flex overflow-x-auto  whitespace-nowrap inter ">
                         {

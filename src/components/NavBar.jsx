@@ -86,7 +86,7 @@ export default function Navbar() {
                             className="relative text-white transition-colors duration-300 transform hover:opacity-80 "
                         >
                             <svg
-                                className="w-7 h-7"
+                                className="w-8 h-8"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -100,10 +100,10 @@ export default function Navbar() {
                                 />
                             </svg>
 
-                            <span className="absolute w-4 h-4 -top-1 -left-1 text-center  text-[10px] text-white bg-blue-500 rounded-full ">{1}</span>
+                            <span className="absolute w-[18px] h-4 -top-1 -left-1 text-center  text-[10px] text-black bg-red-500 rounded-full font-bold">{0}</span>
                         </Link>
                         <div>
-                            <img className="w-10" src={profile} alt="" />
+                            <img className="w-10 h-9" src={profile} alt="" />
                         </div>
 
                     </div>

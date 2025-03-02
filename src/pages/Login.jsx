@@ -136,11 +136,11 @@ const Login = () => {
                                     />
                                     {captchaValid === false && <p className="text-red-500 text-xs pl-2 mt-1">Invalid Captcha, please try again.</p>}
                                 </div>
-                                <div className="mt-5 xl:mt-6">
+                                <div className={`mt-5 xl:mt-6 ${!captchaValid ? "cursor-not-allowed" : ""}`}>
                                     <input type="submit" value="Sign In"
                                         disabled={!captchaValid}
-                                        className={`btn w-full text-sm xl:text-base font-bold tracking-wide text-white capitalize rounded-lg ${captchaValid ? "bg-[#D1A054]" : "bg-[#D1A054B3] cursor-not-allowed"
-                                            } focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50`}
+                                        style={{ backgroundColor: captchaValid ? "#D1A054" : "#D1A054B3" }}
+                                        className={`btn w-full text-sm xl:text-base font-bold tracking-wide text-white capitalize rounded-lg focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50`}
                                     />
                                 </div>
                             </form>
