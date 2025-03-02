@@ -15,14 +15,17 @@ export default function Navbar() {
         <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
         {
             user ? 
-            <li onClick={logOut}><NavLink>SIGN OUT</NavLink></li>
+            
+            <li>
+                <button onClick={logOut}>SIGN OUT</button>
+            </li>
             :
             <li><NavLink to='/login'>SIGN IN</NavLink></li>
         }
     </>
 
     return (
-        <nav className=" text-white fixed  z-50 w-full bg-[#15151580] uppercase">
+        <nav className="text-white fixed  z-50 w-full bg-[#15151580] uppercase">
             <div className=" max-w-[2560px] px-6 md:px-8 lg:px-10 xl:px-14 p-1 lg:py-2  lg:flex lg:justify-between lg:items-center">
                 {/* Logo */}
                 <div className="flex items-center justify-between">
@@ -86,7 +89,7 @@ export default function Navbar() {
                             className="relative text-white transition-colors duration-300 transform hover:opacity-80 "
                         >
                             <svg
-                                className="w-8 h-8"
+                                className="min-w-8 min-h-8"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +103,7 @@ export default function Navbar() {
                                 />
                             </svg>
 
-                            <span className="absolute w-[18px] h-4 -top-1 -left-1 text-center  text-[10px] text-black bg-red-500 rounded-full font-bold">{0}</span>
+                            <span className="absolute min-w-[18px] min-h-4 -top-1 -left-1 text-center  text-[11px] text-black bg-red-500 rounded-full font-bold">{0}</span>
                         </Link>
                         <div>
                             <img className="w-10 h-9" src={profile} alt="" />
