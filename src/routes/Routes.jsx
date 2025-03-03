@@ -6,13 +6,15 @@ import OrderFood from "../pages/OrderFood";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ErrorPage from "../pages/ErrorPage";
+import Dashboard from "../layouts/Dashboard";
+import Cart from "../pages/Dashboard/Cart";
 
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         element: <Main></Main>,
         children: [
             {
@@ -34,6 +36,16 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'cart',
+                element: <Cart></Cart>,
             },
         ]
     },

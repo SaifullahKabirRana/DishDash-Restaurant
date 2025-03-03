@@ -88,7 +88,7 @@ export default function Navbar() {
                     {/* Cart Icon */}
                     <div className="flex justify-center items-center gap-3 ">
                         <Link
-                            to=''
+                            to={'/dashboard/cart'}
                             className="relative text-white transition-colors duration-300 transform hover:opacity-80 "
                         >
                             <svg
