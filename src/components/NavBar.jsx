@@ -2,10 +2,13 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import profile from '../assets/assets/profile.png'
 import useAuth from "../hooks/useAuth";
+import useCart from "../hooks/useCart";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const {user, logOut} = useAuth();
+    const { user, logOut } = useAuth();
+    const [cart] = useCart();
+    console.log(cart.length);
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -14,13 +17,13 @@ export default function Navbar() {
         <li><NavLink to='/contact'>CONTACT us</NavLink></li>
         <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
         {
-            user ? 
-            
-            <li>
-                <button onClick={logOut}>SIGN OUT</button>
-            </li>
-            :
-            <li><NavLink to='/login'>SIGN IN</NavLink></li>
+            user ?
+
+                <li>
+                    <button onClick={logOut}>SIGN OUT</button>
+                </li>
+                :
+                <li><NavLink to='/login'>SIGN IN</NavLink></li>
         }
     </>
 
@@ -103,7 +106,7 @@ export default function Navbar() {
                                 />
                             </svg>
 
-                            <span className="absolute min-w-[18px] min-h-4 -top-1 -left-1 text-center  text-[11px] text-black bg-red-500 rounded-full font-bold">{0}</span>
+                            <span className="absolute min-w-[18px] min-h-4 -top-1 -left-1 text-center  text-[11px] text-black bg-red-500 rounded-full font-bold">{cart.length}</span>
                         </Link>
                         <div>
                             <img className="w-10 h-9" src={profile} alt="" />
