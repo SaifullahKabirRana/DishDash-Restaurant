@@ -3,12 +3,21 @@ import useAuth from "../hooks/useAuth";
 import Swal from 'sweetalert2'
 
 const FoodCard = ({ items }) => {
+    const { _id, image, name, category, price } = items
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const handleAddToCart = food => {
         if (user && user?.email) {
             // send cart item to the database
+            const cartItems = {
+                menuId: _id,
+                email: user?.email,
+                name,
+                image,
+                category,
+                price
+            }
         }
         else {
             Swal.fire({
