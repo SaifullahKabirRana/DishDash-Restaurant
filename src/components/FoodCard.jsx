@@ -3,16 +3,17 @@ import useAuth from "../hooks/useAuth";
 import Swal from 'sweetalert2'
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import useCart from "../hooks/useCart";
 
 const FoodCard = ({ items }) => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [, refetch] = useCart();
     const handleAddToCart = async (food) => {
         if (user && user?.email) {
             // send cart item to the database
-            console.log(food);
             const cartItems = {
                 menuId: food._id,
                 email: user?.email,
@@ -22,9 +23,11 @@ const FoodCard = ({ items }) => {
                 price: food.price
             }
             try {
-                axiosSecure.post(`/carts`, cartItems);
+                await axiosSecure.post(`/carts`, cartItems);
+                // refetch cart to update the cart items count
+                await refetch();
                 toast.success('Item added in the cart');
-                console.log(cartItems);
+
             }
             catch (err) {
                 toast.error(err.code);
