@@ -1,8 +1,13 @@
+import Title from "../../components/Dashboard/Title";
 
 const Cart = () => {
     return (
-        <div className="text-6xl text-black ">
-            <h2>this is cart</h2>
+        <div className=" md:min-h-screen md:bg-[#F3F3F3]">
+            <Title
+                subHeading={'---My Cart---'}
+                heading={'WANNA ADD MORE?'}
+            ></Title>
+            
         </div>
     );
 };

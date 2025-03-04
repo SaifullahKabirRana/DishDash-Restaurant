@@ -13,8 +13,8 @@ import { IoMailSharp } from "react-icons/io5";
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     return (
-        <div className="flex">
-            <div className="md:w-[200px] lg:w-[250px] xl:w-[280px]">
+        <div className="md:flex">
+            <div className="md:w-[200px] lg:w-[240px] xl:w-[270px]">
                 {/* Button to open the sidebar */}
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -120,7 +120,7 @@ const Dashboard = () => {
                                     <li>
                                         <NavLink to='/order/salad' className={`flex items-center gap-2`}>
                                             <FaShoppingBag className="text-lg xl:text-xl" />
-                                            <span className="">Shop</span>
+                                            <span className="">Order</span>
                                         </NavLink>
                                     </li>
                                     <li>
@@ -139,13 +139,13 @@ const Dashboard = () => {
                 {/* Main Content */}
                 <div
                     onClick={() => setIsSidebarOpen(false)}
-                    className={`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors md:hidden ${isSidebarOpen ? "block" : "hidden"
+                    className={`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-200/60 transition-colors md:hidden ${isSidebarOpen ? "block" : "hidden"
                         }`}>
 
                 </div>
 
             </div>
-            <div className="flex-1">
+            <div className="md:flex-1">
                 <Outlet></Outlet>
             </div>
         </div>
