@@ -24,6 +24,15 @@
 
 }
 
+/* for sidebar color theme */
+#nav2 a.active {
+
+  background-color: transparent;
+  color: #FFFFFF;
+  font-weight: 700;
+
+}
+
 
 /* banner height */
 .carousel * {
