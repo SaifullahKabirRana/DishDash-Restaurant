@@ -3,10 +3,43 @@ import Title from "../../components/Dashboard/Title";
 import useCart from '../../hooks/useCart'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+
 
 const Cart = () => {
-    const [cart] = useCart();
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+    const [cart, refetch] = useCart();
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    const axiosSecure = useAxiosSecure();
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#D1A054",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/carts/${id}`)
+                    .then(res => {
+                        if (res?.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Cart item has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+                    .catch()
+            }
+        });
+
+    }
     return (
         <div className=" md:min-h-screen md:bg-[#F3F3F3]">
             <div className="px-5 md:px-10 lg:px-16 xl:px-24 2xl:px-28">
@@ -60,7 +93,9 @@ const Cart = () => {
                                                 </td>
                                                 <td className="text-[#737373]">${item.price}</td>
                                                 <th className="">
-                                                    <button className="btn btn-sm rounded-lg lg:py-4 xl:py-5 bg-[#B91C1C]">
+                                                    <button
+                                                        onClick={() => handleDelete(item._id)}
+                                                        className="btn btn-sm rounded-lg lg:py-4 xl:py-5 bg-[#B91C1C]">
                                                         <FontAwesomeIcon className="text-sm lg:text-base xl:text-lg text-[#FFFFFF]" icon={faTrashCan} />
                                                     </button>
                                                 </th>
