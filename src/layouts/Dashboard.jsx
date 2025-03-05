@@ -14,7 +14,7 @@ const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     return (
         <div className="md:flex">
-            <div className="md:w-[200px] lg:w-[240px] xl:w-[270px]">
+            <div className="md:w-[200px] lg:w-[240px] xl:w-[270px] bg-[#D1A054]">
                 {/* Button to open the sidebar */}
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -26,7 +26,7 @@ const Dashboard = () => {
                 >
                     <span className="sr-only">Open sidebar</span>
                     <svg
-                        className="w-6 h-6"
+                        className="w-6 h-6 text-black"
                         aria-hidden="true"
                         fill="currentColor"
                         viewBox="0 0 20 20"

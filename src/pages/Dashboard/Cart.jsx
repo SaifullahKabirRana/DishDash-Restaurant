@@ -9,7 +9,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Cart = () => {
     const [cart, refetch] = useCart();
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
     const axiosSecure = useAxiosSecure();
 
     const handleDelete = (id) => {
@@ -41,14 +41,14 @@ const Cart = () => {
 
     }
     return (
-        <div className=" md:min-h-screen md:bg-[#F3F3F3]">
-            <div className="px-5 md:px-10 lg:px-16 xl:px-24 2xl:px-28">
+        <div className=" min-h-screen bg-[#F3F3F3]">
+            <div className="px-3 md:px-10 lg:px-16 xl:px-24 2xl:px-28">
                 <Title
                     subHeading={'---My Cart---'}
                     heading={'WANNA ADD MORE?'}
                 ></Title>
                 <div className="bg-white">
-                    <div className=" md:p-6 lg:p-8 xl:p-10 2xl:xl:p-14">
+                    <div className="p-3 md:p-6 lg:p-8 xl:p-10 2xl:xl:p-14">
                         <div className="flex justify-between items-center uppercase cinzel">
                             <h2 className="text-[#151515] text-sm md:text-base lg:text-xl xl:text-2xl font-bold">Total Orders: {cart.length}</h2>
                             <h3 className="text-[#151515] text-sm md:text-base lg:text-xl xl:text-2xl font-bold">total price: ${totalPrice}</h3>
