@@ -9,7 +9,9 @@ import SocialLogin from '../components/SocialLogin';
 import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import useAxiosCommon from '../hooks/useAxiosCommon';
 const Register = () => {
+    const axiosCommon = useAxiosCommon();
     const { createUser, updateUserProfile, setUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [registerError, setRegisterError] = useState('');
@@ -40,9 +42,19 @@ const Register = () => {
         setRegisterError('');
 
         try {
+
             const result = await createUser(email, password);
             console.log(result.user);
             updateUserProfile(name, photo);
+
+            // save user info in db 
+            const userInfo = {
+                name,
+                email,
+                photo
+            }
+            await axiosCommon.post('/users', userInfo);
+
             // Optimistic UI Update
             setUser({ ...result?.user, photoURL: photo, displayName: name });
             toast.success('SignUp Successfully');
