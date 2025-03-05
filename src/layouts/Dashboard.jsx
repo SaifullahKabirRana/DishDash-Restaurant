@@ -145,7 +145,7 @@ const Dashboard = () => {
                 </div>
 
             </div>
-            <div className="md:flex-1">
+            <div className="md:flex-1 ">
                 <Outlet></Outlet>
             </div>
         </div>
