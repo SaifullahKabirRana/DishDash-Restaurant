@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     return (
         <div className="md:flex">
-            <div className="md:w-[200px] lg:w-[240px] xl:w-[270px] bg-[#D1A054]">
+            <div className="md:w-[200px] lg:w-[240px] xl:w-[270px] bg-[#D1A054] md:bg-transparent">
                 {/* Button to open the sidebar */}
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
