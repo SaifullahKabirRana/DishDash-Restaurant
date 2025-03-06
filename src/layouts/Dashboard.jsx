@@ -4,7 +4,7 @@ import { useState } from "react";
 import { HiHome } from "react-icons/hi2";
 import { FaCalendarDays } from "react-icons/fa6";
 import { IoWallet } from "react-icons/io5";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaBook, FaListUl, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
 import { PiListStarFill } from "react-icons/pi";
 import { BsCalendar2CheckFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -12,6 +12,8 @@ import { FaShoppingBag } from "react-icons/fa";
 import { IoMailSharp } from "react-icons/io5";
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const isAdmin = true;
+
     return (
         <div className="md:flex">
             <div className="md:w-[200px] lg:w-[240px] xl:w-[270px] bg-[#D1A054]">
@@ -60,47 +62,85 @@ const Dashboard = () => {
                                 <ul
                                     id="nav2"
                                     className="text-sm xl:text-base  space-y-4 xl:space-y-5  font-medium text-[#151515] cinzel  uppercase">
-                                    <li>
-                                        <NavLink to='/dashboard/userHome' className={`flex items-center gap-2`}>
-                                            <HiHome className="text-lg xl:text-xl" />
-                                            <span className="">User Home</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to='/dashboard/reservation' className={`flex items-center gap-2`}>
-                                            <FaCalendarDays className="text-lg xl:text-xl" />
-                                            <span className="">Reservation</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to='/dashboard/paymentHistory' className={`flex items-center gap-2`}>
-                                            <IoWallet className="text-lg xl:text-xl" />
-                                            <span className="">Payment History</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to='/dashboard/cart' className={`flex items-center gap-2`}>
-                                            <FaShoppingCart className="text-lg xl:text-xl" />
-                                            <span className="">My Cart</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to='/dashboard/review' className={`flex items-center gap-2`}>
-                                            <PiListStarFill className="text-lg xl:text-xl" />
-                                            <span className="">Add Review</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to='/dashboard/bookings' className={`flex items-center  gap-2`}>
-                                            <BsCalendar2CheckFill className="text-lg xl:text-xl" />
-                                            <span className="">My Booking</span>
-                                        </NavLink>
-                                    </li>
+                                    {
+                                        isAdmin ?
+                                            <>
+                                                <li>
+                                                    <NavLink to='/dashboard/adminHome' className={`flex items-center gap-2`}>
+                                                        <HiHome className="text-lg xl:text-xl" />
+                                                        <span className="">Admin Home</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/addItems' className={`flex items-center gap-2`}>
+                                                        <FaUtensils className="text-lg xl:text-xl" />
+                                                        <span className="">Add Items</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/manageItems' className={`flex items-center gap-2`}>
+                                                        <FaListUl className="text-lg xl:text-xl" />
+                                                        <span className="">Manage Items</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/manageBookings' className={`flex items-center gap-2`}>
+                                                        <FaBook className="text-lg xl:text-xl" />
+                                                        <span className="">Manage Bookings</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/allUsers' className={`flex items-center gap-2`}>
+                                                        <FaUsers className="text-lg xl:text-xl" />
+                                                        <span className="">All Users</span>
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                            :
+                                            <>
+                                                <li>
+                                                    <NavLink to='/dashboard/userHome' className={`flex items-center gap-2`}>
+                                                        <HiHome className="text-lg xl:text-xl" />
+                                                        <span className="">User Home</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/reservation' className={`flex items-center gap-2`}>
+                                                        <FaCalendarDays className="text-lg xl:text-xl" />
+                                                        <span className="">Reservation</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/paymentHistory' className={`flex items-center gap-2`}>
+                                                        <IoWallet className="text-lg xl:text-xl" />
+                                                        <span className="">Payment History</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/cart' className={`flex items-center gap-2`}>
+                                                        <FaShoppingCart className="text-lg xl:text-xl" />
+                                                        <span className="">My Cart</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/review' className={`flex items-center gap-2`}>
+                                                        <PiListStarFill className="text-lg xl:text-xl" />
+                                                        <span className="">Add Review</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to='/dashboard/bookings' className={`flex items-center  gap-2`}>
+                                                        <BsCalendar2CheckFill className="text-lg xl:text-xl" />
+                                                        <span className="">My Booking</span>
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                    }
 
 
                                 </ul>
                             </div>
-                            {/* bottom list */}
+                            {/* shared navLinks*/}
                             <div className="mt-[35px]">
                                 <hr className="text-[#FFFFFF] -ml-2 mr-5" />
                                 <ul id="nav2"
@@ -125,7 +165,7 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink to='/contact' className={`flex items-center gap-2`}>
-                                            <IoMailSharp  className="text-lg xl:text-xl" />
+                                            <IoMailSharp className="text-lg xl:text-xl" />
                                             <span className="">Contact</span>
                                         </NavLink>
                                     </li>

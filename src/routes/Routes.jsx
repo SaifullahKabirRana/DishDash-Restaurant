@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Dashboard from "../layouts/Dashboard";
 import Cart from "../pages/Dashboard/Cart";
 import PrivateRoute from "./PrivateRoute";
+import AllUser from "../pages/Dashboard/AllUser";
 
 
 
@@ -47,6 +48,12 @@ export const router = createBrowserRouter([
             {
                 path: 'cart',
                 element: <Cart></Cart>,
+            },
+
+            // admin
+            {
+                path: 'allUsers',
+                element: <AllUser></AllUser>,
             },
         ]
     },
