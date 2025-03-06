@@ -3,14 +3,24 @@ import { FaGithub } from "react-icons/fa6";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosCommon from "../hooks/useAxiosCommon";
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useAuth();
+    const axiosCommon = useAxiosCommon();
     const navigate = useNavigate();
     const location = useLocation();
     const handleSocialLogin = async (socialProvider) => {
         try {
-            await socialProvider();
+            const result = await socialProvider();
+            const userInfo = {
+                name: result.user.displayName,
+                email: result.user.email,
+                photo: result.user.photoURL
+            }
+            const { data } = await axiosCommon.post(`/users`, userInfo);
+            console.log(data);
+
             toast.success('Login Successfully!');
             navigate(location?.state?.from?.pathname || "/", { replace: true });
         }
