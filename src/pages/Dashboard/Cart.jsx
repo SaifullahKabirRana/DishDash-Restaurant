@@ -57,7 +57,7 @@ const Cart = () => {
                             </Link>
                         </div>
                         {/* table */}
-                        <div className="pt-5 md:pt-6 lg:mt-6 xl:mt-8">
+                        <div className="pt-4 md:pt-6 xl:pt-8 ">
                             <div className="overflow-x-auto rounded-t-[15px]">
                                 <table className="table rounded-3xl">
                                     {/* head */}

@@ -5,11 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: allUsers = [] , refetch} = useQuery({
+    const { data: allUsers = [], refetch } = useQuery({
         queryKey: ['allUsers'],
         queryFn: async () => {
             const { data } = await axiosSecure(`/users`);
@@ -17,32 +18,52 @@ const AllUser = () => {
         }
     });
 
+    const handleMakeAdmin = async (user) => {
+        try {
+            const { data } = await axiosSecure.patch(`/users/admin/${user._id}`);
+            if (data.modifiedCount > 0) {
+                refetch();
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: `${user.name} is an Admin Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+
+        }
+        catch (err) {
+            toast.error(err.code);
+        }
+    }
+
     const handleDeleteUser = id => {
         Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#D1A054",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-        
-                        axiosSecure.delete(`/users/${id}`)
-                            .then(res => {
-                                if (res?.data.deletedCount > 0) {
-                                    refetch();
-                                    Swal.fire({
-                                        title: "Deleted!",
-                                        text: "User has been deleted.",
-                                        icon: "success"
-                                    });
-                                }
-                            })
-                            .catch()
-                    }
-                });
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#D1A054",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/users/${id}`)
+                    .then(res => {
+                        if (res?.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "User has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+                    .catch()
+            }
+        });
     }
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
@@ -58,14 +79,14 @@ const AllUser = () => {
 
                         </div>
                         {/* table */}
-                        <div className="pt-5 md:pt-6 lg:mt-6 xl:mt-8">
+                        <div className="pt-4 lg:pt-6">
                             <div className="overflow-x-auto rounded-t-[15px]">
                                 <table className="table rounded-3xl">
                                     {/* head */}
                                     <thead className=" bg-[#D1A054]">
                                         <tr className="uppercase text-white text-xs lg:text-sm">
                                             <th>
-                                                
+
                                             </th>
                                             <th>Name</th>
                                             <th>Email</th>
@@ -85,11 +106,17 @@ const AllUser = () => {
                                                 <td className="text-[#737373]">
                                                     {user.email}
                                                 </td>
-                                                <th className="">
-                                                    <button
-                                                        className="btn btn-sm rounded-lg lg:py-4 xl:py-5 bg-[#D1A054]">
-                                                        <FaUsers className="text-base lg:text-lg xl:text-xl text-[#FFFFFF]" />
-                                                    </button>
+                                                <th className="text-[#737373] font-bold">
+                                                    {
+                                                        user.role === 'admin' ?
+                                                            'Admin'
+                                                            :
+                                                            <button
+                                                                onClick={() => handleMakeAdmin(user)}
+                                                                className="btn btn-sm rounded-lg lg:py-4 xl:py-5 bg-[#D1A054]">
+                                                                <FaUsers className="text-base lg:text-lg xl:text-xl text-[#FFFFFF]" />
+                                                            </button>
+                                                    }
                                                 </th>
                                                 <th className="">
                                                     <button
