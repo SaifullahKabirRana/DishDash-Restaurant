@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         });
         return () => unsubscribe();
-    }, [])
+    }, [axiosCommon, user?.email])
 
     const authInfo = {
         user,
