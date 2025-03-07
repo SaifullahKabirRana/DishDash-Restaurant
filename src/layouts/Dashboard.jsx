@@ -10,9 +10,10 @@ import { BsCalendar2CheckFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaShoppingBag } from "react-icons/fa";
 import { IoMailSharp } from "react-icons/io5";
+import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="md:flex">
