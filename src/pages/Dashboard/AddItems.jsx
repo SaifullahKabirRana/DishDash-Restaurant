@@ -1,24 +1,31 @@
+import { useForm } from "react-hook-form";
 import Title from "../../components/Dashboard/Title";
+import { FaUtensils } from "react-icons/fa";
 
 const AddItems = () => {
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data)
+    };
+
     return (
-        <div className="mx-4 md:mx-10 lg:mx-16 xl:mx-36 2xl:mx-44">
+        <div className="mx-4 md:mx-10 lg:mx-16 xl:mx-36 2xl:mx-44 pb-8 md:pb-12 xl:pb-16 2xl:pb-20">
             <Title
                 subHeading={"---What's new?---"}
                 heading={"ADD AN ITEM"}
             ></Title>
-            <div className="mt-6 md:mt-8 lg:mt-10 xl:mt-12 inter">
-                <div className="bg-[#F3F3F3] px-4 md:px-8 lg:px-10 xl:px-14 2xl:px-16 py-6 lg:py-8 xl:py-10 2xl:py-12">
+            <div className="">
+                <div className="bg-[#F3F3F3] px-4 md:px-6 lg:px-10 xl:px-14 2xl:px-16 py-6 lg:py-8 xl:py-10 2xl:py-12">
                     <section className="w-full">
-                        <form>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="">
                                 <div className="flex flex-col gap-2">
                                     <label className="text-gray-700 font-semibold" htmlFor="name">
                                         Recipe name*
                                     </label>
                                     <input
-                                        id="name"
-                                        name="name"
+                                        {...register("name", { required: true })}
                                         type="text"
                                         placeholder="Recipe name"
                                         className="block w-full px-4 py-3  opacity-90  border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -31,11 +38,11 @@ const AddItems = () => {
                                             Category*
                                         </label>
                                         <select
-                                            name='category'
-                                            id='category'
-                                            
+                                            {...register("category", { required: true })}
+                                            type='text'
                                             className='block w-full px-4 py-3  opacity-90  border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                         >
+                                            <option disabled selected>Select a Category</option>
                                             <option value='salad'>Salad</option>
                                             <option value='pizza'>Pizza</option>
                                             <option value='soup'>Soup</option>
@@ -53,8 +60,7 @@ const AddItems = () => {
                                             Price*
                                         </label>
                                         <input
-                                            id="price"
-                                            name="price"
+                                            {...register("price", { required: true })}
                                             type="number"
                                             placeholder="Price"
                                             className="block w-full px-4 py-3 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40 focus:outline-none focus:ring"
@@ -62,23 +68,26 @@ const AddItems = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-2 mt-4">
-                                    <label className="text-gray-700 font-semibold" htmlFor="details">
+                                    <label className="text-gray-700 font-semibold" htmlFor="recipe">
                                         Recipe Details*
                                     </label>
                                     <textarea
+                                        {...register("recipe", { required: true })}
+                                        type='text'
                                         placeholder="Recipe Details"
                                         className='block w-full h-[80px] md:h-[100px] xl:h-[150px] 2xl:h-[200px] px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                        name='details'
-                                        id='details'
-                                        required
                                     ></textarea>
                                 </div>
+                                <div className="mt-4 ">
+                                    <input
+                                        {...register("image", { required: true })}
+                                        type="file"
+                                        className="file-input file-input-ghost  text-sm lg:text-base" />
+                                </div>
                             </div>
-                            <div className="flex justify-center mt-6">
-                                <input type="submit" value="Update Recipe Details"
-                                className="btn font-semibold bg-gradient-to-r from-[#835D23] to-[#B58130] text-white"
-                                />
-                            </div>
+                            <button className="mt-6 btn font-semibold bg-gradient-to-r from-[#835D23] to-[#B58130] text-white">
+                                Add Item <FaUtensils className="text-base ml-1"></FaUtensils>
+                            </button>
                         </form>
                     </section>
 
