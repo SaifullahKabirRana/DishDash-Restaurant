@@ -1,12 +1,34 @@
 import { useForm } from "react-hook-form";
 import Title from "../../components/Dashboard/Title";
 import { FaUtensils } from "react-icons/fa";
+import useAxiosCommon from "../../hooks/useAxiosCommon";
+import toast from "react-hot-toast";
+
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const AddItems = () => {
     const { register, handleSubmit } = useForm();
+    const axiosCommon = useAxiosCommon();
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = async (data) => {
+        console.log(data);
+
+        // img upload to imgbb and then get an url
+        const imageFile = { image: data.image[0] };
+
+        try {
+            const res = await axiosCommon.post(image_hosting_api, imageFile, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                }
+            });
+            console.log(res.data);
+        }
+        catch (err) {
+            toast.error(err.code);
+        }
     };
 
     return (
@@ -40,9 +62,10 @@ const AddItems = () => {
                                         <select
                                             {...register("category", { required: true })}
                                             type='text'
+                                            defaultValue='default'
                                             className='block w-full px-4 py-3  opacity-90  border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                         >
-                                            <option disabled selected>Select a Category</option>
+                                            <option disabled value='default'>Select a Category</option>
                                             <option value='salad'>Salad</option>
                                             <option value='pizza'>Pizza</option>
                                             <option value='soup'>Soup</option>
