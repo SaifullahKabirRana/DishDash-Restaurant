@@ -76,10 +76,9 @@ const AllUser = () => {
                     <div className="p-3 md:p-4 lg:p-6 xl:p-10 2xl:xl:p-14">
                         <div className=" uppercase cinzel">
                             <h2 className="text-[#151515] text-sm md:text-base lg:text-xl xl:text-2xl font-bold">Total Users: {allUsers.length}</h2>
-
                         </div>
                         {/* table */}
-                        <div className="pt-4 lg:pt-6">
+                        <div className="pt-2 md:pt-3 xl:pt-4">
                             <div className="overflow-x-auto rounded-t-[15px]">
                                 <table className="table rounded-3xl">
                                     {/* head */}
