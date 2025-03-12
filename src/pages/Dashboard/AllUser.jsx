@@ -67,7 +67,7 @@ const AllUser = () => {
     }
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
-            <div className="px-3 md:px-4 lg:px-10 xl:px-24 2xl:px-28">
+            <div className="px-3 md:ml-5 lg:ml-0 lg:px-10 xl:px-24 2xl:px-28">
                 <Title
                     subHeading={'---How many??---'}
                     heading={'MANAGE ALL USERS'}
