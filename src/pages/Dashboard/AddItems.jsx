@@ -3,14 +3,16 @@ import Title from "../../components/Dashboard/Title";
 import { FaUtensils } from "react-icons/fa";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const AddItems = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const axiosCommon = useAxiosCommon();
+    const axiosSecure = useAxiosSecure();
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -24,7 +26,26 @@ const AddItems = () => {
                     "Content-Type": "multipart/form-data",
                 }
             });
-            console.log(res.data);
+
+            if (res.data.success) {
+                const menuItem = {
+                    name: data.name,
+                    recipe: data.recipe,
+                    image: res.data.data.display_url,
+                    category: data.category,
+                    price: parseFloat(data.price)
+
+                }
+                const menusRes = await axiosSecure.post(`/menu`, menuItem)
+
+                if (menusRes.data.insertedId) {
+                    reset();
+                    toast.success(`${data.name} is added to the menu.`)
+                }
+                else {
+                    toast.error("Something error! Please try again")
+                }
+            }
         }
         catch (err) {
             toast.error(err.code);
