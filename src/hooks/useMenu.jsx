@@ -9,11 +9,11 @@ const useMenu = () => {
         queryKey: ['menu'],
         queryFn: async () => {
             const { data } = await axiosCommon.get('/menu');
-            return data || [];
+            return (Array.isArray(data) ? data : []);
         }
     })
 
-    return [menu, refetch]
+    return [menu, refetch];
 
 };
 

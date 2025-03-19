@@ -4,6 +4,7 @@ import { faEdit, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import useMenu from "../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
     const [menu, refetch] = useMenu();
@@ -91,11 +92,12 @@ const ManageItems = () => {
                                                 </td>
                                                 <td className="text-[#737373]">${item.price}</td>
                                                 <th>
-                                                    <button
-
-                                                        className="btn btn-sm rounded-lg lg:py-4 xl:py-5 bg-[#D1A054]">
-                                                        <FontAwesomeIcon className="text-sm lg:text-base xl:text-lg text-[#FFFFFF]" icon={faEdit} />
-                                                    </button>
+                                                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                                                        <button
+                                                            className="btn btn-sm rounded-lg lg:py-4 xl:py-5 bg-[#D1A054]">
+                                                            <FontAwesomeIcon className="text-sm lg:text-base xl:text-lg text-[#FFFFFF]" icon={faEdit} />
+                                                        </button>
+                                                    </Link>
                                                 </th>
                                                 <th>
                                                     <button
