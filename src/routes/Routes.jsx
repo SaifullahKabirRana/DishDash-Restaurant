@@ -61,13 +61,13 @@ export const router = createBrowserRouter([
                 element: <AdminRoute><AddItems></AddItems></AdminRoute>,
             },
             {
-                path: 'updateItem/:id',
-                element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-                loader: ({params}) => fetch(`${import.meta.env.VITE_API_UR}/menu/${params.id}`)
-            },
-            {
                 path: 'manageItems',
                 element: <AdminRoute><ManageItems></ManageItems></AdminRoute>,
+            },
+            {
+                path: 'updateItem/:id',
+                element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/menu/${params.id}`)
             },
             {
                 path: 'allUsers',

@@ -3,11 +3,13 @@ import Title from "../../components/Dashboard/Title";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const UpdateItem = () => {
+    const { name, price, recipe, category, _id } = useLoaderData();
     const { register, handleSubmit, reset } = useForm();
     const axiosCommon = useAxiosCommon();
     const axiosSecure = useAxiosSecure();
@@ -66,6 +68,7 @@ const UpdateItem = () => {
                                         Recipe name*
                                     </label>
                                     <input
+                                        defaultValue={name}
                                         {...register("name", { required: true })}
                                         type="text"
                                         placeholder="Recipe name"
@@ -81,7 +84,7 @@ const UpdateItem = () => {
                                         <select
                                             {...register("category", { required: true })}
                                             type='text'
-                                            defaultValue='default'
+                                            defaultValue={category}
                                             className='block w-full px-4 py-3  opacity-90  border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                         >
                                             <option disabled value='default'>Select a Category</option>
@@ -102,6 +105,7 @@ const UpdateItem = () => {
                                             Price*
                                         </label>
                                         <input
+                                            defaultValue={price}
                                             {...register("price", { required: true })}
                                             type="number"
                                             placeholder="Price"
@@ -114,6 +118,7 @@ const UpdateItem = () => {
                                         Recipe Details*
                                     </label>
                                     <textarea
+                                        defaultValue={recipe}
                                         {...register("recipe", { required: true })}
                                         type='text'
                                         placeholder="Recipe Details"
