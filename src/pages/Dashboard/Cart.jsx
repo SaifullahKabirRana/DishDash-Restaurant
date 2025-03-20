@@ -52,9 +52,13 @@ const Cart = () => {
                         <div className="flex justify-between items-center uppercase cinzel">
                             <h2 className="text-[#151515] text-sm md:text-base lg:text-xl xl:text-2xl font-bold">Total Orders: {cart.length}</h2>
                             <h3 className="text-[#151515] text-sm md:text-base lg:text-xl xl:text-2xl font-bold">total price: ${totalPrice}</h3>
-                            <Link>
-                                <button className="btn btn-sm lg:btn-md bg-[#D1A054] text-white font-bold text-sm md:text-base lg:text-xl xl:text-2xl">Pay</button>
-                            </Link>
+                            {
+                                cart.length ? <Link to='/dashboard/payment'>
+                                    <button className="btn btn-sm lg:btn-md bg-[#D1A054] text-white font-bold text-sm md:text-base lg:text-xl xl:text-2xl">Pay</button>
+                                </Link>
+                                    :
+                                    <button className="btn btn-sm lg:btn-md bg-[#D1A054B3] text-white font-bold text-sm md:text-base lg:text-xl xl:text-2xl cursor-not-allowed focus:cursor-not-allowed">Pay</button>
+                            }
                         </div>
                         {/* table */}
                         <div className="pt-4 md:pt-6 xl:pt-8 ">

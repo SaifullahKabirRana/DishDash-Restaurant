@@ -9,8 +9,9 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const UpdateItem = () => {
-    const { name, price, recipe, category, _id } = useLoaderData();
-    const { register, handleSubmit, reset } = useForm();
+    const { name, price, recipe, category, _id, image } = useLoaderData();
+    console.log(image, 'image');
+    const { register, handleSubmit } = useForm();
     const axiosCommon = useAxiosCommon();
     const axiosSecure = useAxiosSecure();
 
@@ -36,11 +37,10 @@ const UpdateItem = () => {
                     price: parseFloat(data.price)
 
                 }
-                const menusRes = await axiosSecure.post(`/menu`, menuItem)
-
-                if (menusRes.data.insertedId) {
-                    reset();
-                    toast.success(`${data.name} is added to the menu.`)
+                const menusRes = await axiosSecure.patch(`/menu/${_id}`, menuItem)
+                console.log(menusRes);
+                if (menusRes.data.modifiedCount > 0) {
+                    toast.success(`${data.name} is updated to the menu.`)
                 }
                 else {
                     toast.error("Something error! Please try again")
@@ -69,7 +69,7 @@ const UpdateItem = () => {
                                     </label>
                                     <input
                                         defaultValue={name}
-                                        {...register("name", { required: true })}
+                                        {...register("name")}
                                         type="text"
                                         placeholder="Recipe name"
                                         className="block w-full px-4 py-3  opacity-90  border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -82,7 +82,7 @@ const UpdateItem = () => {
                                             Category*
                                         </label>
                                         <select
-                                            {...register("category", { required: true })}
+                                            {...register("category")}
                                             type='text'
                                             defaultValue={category}
                                             className='block w-full px-4 py-3  opacity-90  border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
@@ -106,7 +106,7 @@ const UpdateItem = () => {
                                         </label>
                                         <input
                                             defaultValue={price}
-                                            {...register("price", { required: true })}
+                                            {...register("price")}
                                             type="number"
                                             placeholder="Price"
                                             className="block w-full px-4 py-3 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40 focus:outline-none focus:ring"
@@ -119,7 +119,7 @@ const UpdateItem = () => {
                                     </label>
                                     <textarea
                                         defaultValue={recipe}
-                                        {...register("recipe", { required: true })}
+                                        {...register("recipe")}
                                         type='text'
                                         placeholder="Recipe Details"
                                         className='block w-full h-[80px] md:h-[100px] xl:h-[150px] 2xl:h-[200px] px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
@@ -127,6 +127,7 @@ const UpdateItem = () => {
                                 </div>
                                 <div className="mt-4 ">
                                     <input
+
                                         {...register("image", { required: true })}
                                         type="file"
                                         className="file-input file-input-ghost  text-sm lg:text-base" />

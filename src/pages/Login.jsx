@@ -34,8 +34,7 @@ const Login = () => {
         setLoginError('');
 
         try {
-            const result = await signIn(email, password);
-            console.log(result.user);
+            await signIn(email, password);
             toast.success('SignIn Successfully');
             navigate(location?.state?.from?.pathname || "/", { replace: true });
         }
