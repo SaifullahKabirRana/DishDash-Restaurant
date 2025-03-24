@@ -2,22 +2,33 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
+import useAuth from "../../../hooks/useAuth";
 
 const CheckoutForm = () => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+    const [transactionId, setTransactionId] = useState('');
+    const { user } = useAuth();
+    console.log(user, 'from payment');
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
-    const cart = useCart();
+    const [cart] = useCart();
     const totalPrice = parseFloat(cart.reduce((total, item) => total + item.price, 0).toFixed(2));
+    console.log(totalPrice, 'totalPrice');
+
 
     useEffect(() => {
-        axiosSecure.post(`/create-payment-intent`, { price: totalPrice })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret);
-            })
+        if (totalPrice > 0) {
+            axiosSecure.post(`/create-payment-intent`, { price: totalPrice })
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+                .catch(error => {
+                    console.error("Payment Intent Error:", error);
+                });
+        }
     }, [axiosSecure, totalPrice]);
 
     const handleSubmit = async (e) => {
@@ -46,6 +57,27 @@ const CheckoutForm = () => {
             console.log('Payment method', paymentMethod);
             setError('');
         }
+
+        //confirm payment 
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: user?.displayName || 'anonymous',
+                    email: user?.email || 'anonymous'
+                }
+            }
+        })
+        if (confirmError) {
+            console.log('confirm error', confirmError);
+        }
+        else {
+            console.log('successfully payment intent', paymentIntent);
+            if (paymentIntent.status === "succeeded") {
+                console.log('transaction id', paymentIntent.id);
+                setTransactionId(paymentIntent.id);
+            }
+        }
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -66,8 +98,11 @@ const CheckoutForm = () => {
                 }}
             />
             <p className="text-red-600 pt-2">{error}</p>
+            {transactionId && <p className="text-green-600">Your transaction id: {transactionId}</p>}
             <div className="flex justify-center mt-8">
-                <button className="btn bg-[#570DF8] text-white px-14 rounded-md text-lg" type="submit" disabled={!stripe}>
+                <button
+                    disabled={!stripe || !clientSecret}
+                    className="btn bg-[#570DF8] text-white px-14 rounded-md text-lg peer-disabled:cursor-not-allowed" type="submit" >
                     Pay
                 </button>
             </div>
