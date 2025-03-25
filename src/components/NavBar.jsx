@@ -3,19 +3,27 @@ import { Link, NavLink } from "react-router-dom";
 import profile from '../assets/assets/profile.png'
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { user, logOut } = useAuth();
+    const [isAdmin] = useAdmin();
     const [cart] = useCart();
     console.log(cart.length);
 
+  
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/menu'>Our Menu</NavLink></li>
         <li><NavLink to='/order/salad'>Order Food</NavLink></li>
         <li><NavLink to='/contact'>CONTACT us</NavLink></li>
-        <li><NavLink to='/dashboard'>DASHBOARD</NavLink></li>
+        {
+            user && isAdmin && <li><NavLink to='/dashboard/adminHome'>DASHBOARD</NavLink></li>
+        }
+        {
+            user && !isAdmin && <li><NavLink to='/dashboard/userHome'>DASHBOARD</NavLink></li>
+        }
         {
             user ?
 
