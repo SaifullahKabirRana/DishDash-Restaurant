@@ -63,7 +63,7 @@ const PaymentHistory = () => {
                                                     second: "2-digit",
                                                     
                                                 })}</th>
-                                                <th className={` rounded-3xl text-center btn btn-sm xl:btn-md  my-3 lg:my-2 ${payment.status === 'pending' && 'bg-[#ffd176ad]'}`}>
+                                                <th className={` rounded-3xl text-center btn btn-sm capitalize my-3 lg:my-2 ${payment.status === 'pending' && 'bg-[#fcd059b7]'}`}>
                                                     {payment.status}
                                                 </th>
                                             </tr>)

@@ -1,7 +1,12 @@
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import useAuth from "../hooks/useAuth";
 
 const Footer = () => {
+    const { loading } = useAuth();
+    if (loading) {
+        return;
+    }
     return (
         <div className="">
             <div className="flex inter">

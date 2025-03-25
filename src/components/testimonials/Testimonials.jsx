@@ -27,7 +27,7 @@ const Testimonials = () => {
         }
         getData();
     }, []);
-    console.log('reviews', reviews);
+   
     return (
         <div className='mb-8 md:mb-12 lg:mb-14 xl:mb-16 2xl:mb-20'>
             <SectionTitle
