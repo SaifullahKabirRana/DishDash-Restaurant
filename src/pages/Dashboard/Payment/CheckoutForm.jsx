@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
     const [error, setError] = useState('');
@@ -13,9 +15,9 @@ const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
-    const [cart] = useCart();
+    const [cart, refetch] = useCart();
     const totalPrice = parseFloat(cart.reduce((total, item) => total + item.price, 0).toFixed(2));
-    console.log(totalPrice, 'totalPrice');
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -84,13 +86,24 @@ const CheckoutForm = () => {
                     price: totalPrice,
                     transactionId: paymentIntent.id,
                     date: new Date(), //utc date convert, use moment js to convert
-                    cartId: cart.map(item => item._id),
-                    menuItemId: cart.map(item => item.menuId),
+                    cartIds: cart.map(item => item._id),
+                    menuItemIds: cart.map(item => item.menuId),
                     status: 'pending',
                 }
                 try {
                     const { data } = await axiosSecure.post(`/payments`, payment)
-                    console.log(data, 'payment saved');
+                    refetch();
+                    if(data?.paymentResult?.insertedId){
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Payment Successful!",
+                            text: "Thank you for your purchase. Your payment has been processed successfully.",
+                            showConfirmButton: false,
+                            timer: 2000
+                          });
+                          navigate('/dashboard/paymentHistory')
+                    }
                 }
                 catch (err) {
                     console.log(err);

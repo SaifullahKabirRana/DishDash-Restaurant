@@ -43,7 +43,7 @@ const Cart = () => {
     }
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
-            <div className="px-3 md:px-10 lg:px-16 xl:px-24 2xl:px-28">
+            <div className="px-3 md:px-4 lg:px-16 xl:px-24 2xl:px-28">
                 <Title
                     subHeading={'---My Cart---'}
                     heading={'WANNA ADD MORE?'}

@@ -16,8 +16,9 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin();
 
     return (
-        <div className="md:flex">
-            <div className="md:w-[200px] lg:w-[240px] xl:w-[270px] bg-[#D1A054] md:bg-transparent">
+        <div className="md:flex ">
+            <div className="md:w-[200px] lg:w-[240px] xl:w-[270px] bg-[#D1A054] md:bg-transparent
+            ">
                 {/* Button to open the sidebar */}
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -59,7 +60,7 @@ const Dashboard = () => {
                                 </div>
                             </Link>
                             {/* top list */}
-                            <div className="mt-[55px] ">
+                            <div className="mt-[55px]">
                                 <ul
                                     id="nav2"
                                     className="text-sm xl:text-base  space-y-4 xl:space-y-5  font-medium text-[#151515] cinzel  uppercase">
@@ -186,7 +187,7 @@ const Dashboard = () => {
                 </div>
 
             </div>
-            <div className="md:flex-1 ">
+            <div className="md:flex-1">
                 <Outlet></Outlet>
             </div>
         </div>
