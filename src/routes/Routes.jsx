@@ -18,6 +18,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import ContactUs from "../pages/Contact/ContactUs";
 
 
 
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: '/order/:category',
                 element: <OrderFood></OrderFood>
+            },
+            {
+                path: '/contact',
+                element: <ContactUs></ContactUs>
             },
             {
                 path: '/login',
