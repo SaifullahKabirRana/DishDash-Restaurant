@@ -41,10 +41,12 @@ export default function Navbar() {
             <div className=" max-w-[2560px] px-6 md:px-8 lg:px-10 xl:px-14 p-1 lg:py-2  lg:flex lg:justify-between lg:items-center">
                 {/* Logo */}
                 <div className="flex items-center justify-between">
-                    <div className="flex flex-col cinzel ">
-                        <h2 className=" text-xl md:text-2xl xl:text-3xl font-extrabold ">DishDash</h2>
-                        <p className="text-xs md:text-sm xl:text-lg tracking-[3px] md:tracking-[4px] font-semibold">Restaurant</p>
-                    </div>
+                    <Link to='/'>
+                        <div className="flex flex-col cinzel ">
+                            <h2 className=" text-xl md:text-2xl xl:text-3xl font-extrabold ">DishDash</h2>
+                            <p className="text-xs md:text-sm xl:text-lg tracking-[3px] md:tracking-[4px] font-semibold">Restaurant</p>
+                        </div>
+                    </Link>
 
                     {/* Mobile Menu Button */}
                     <div className="flex lg:hidden">
