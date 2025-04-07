@@ -17,6 +17,7 @@ const AdminHome = () => {
         }
 
     })
+    
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
             <div className="px-4 md:px-10 lg:px-6 pt-5 md:pt-6 xl:pt-10">
@@ -30,7 +31,7 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <IoWallet className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">450</h2>
+                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">${stats.revenue}</h2>
                                     <p className="text-base md:text-lg lg:text-base xl:text-xl ">Revenue</p>
                                 </div>
                             </div>
@@ -39,7 +40,7 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <FaUsers className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">450</h2>
+                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">{stats.users}</h2>
                                     <p className="text-base md:text-lg lg:text-base xl:text-xl ">Customers</p>
                                 </div>
                             </div>
@@ -48,7 +49,7 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <MdMenuBook className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">450</h2>
+                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">{stats.menuItems}</h2>
                                     <p className="text-base md:text-lg lg:text-base xl:text-xl ">Menus</p>
                                 </div>
                             </div>
@@ -57,7 +58,7 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <FaTruck className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">450</h2>
+                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">{stats.orders}</h2>
                                     <p className="text-base md:text-lg lg:text-base xl:text-xl ">Orders</p>
                                 </div>
                             </div>
