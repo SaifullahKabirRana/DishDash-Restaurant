@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { FaTruck, FaUsers } from "react-icons/fa6";
 import { MdMenuBook } from "react-icons/md";
 
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, Legend } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, Legend, ResponsiveContainer } from 'recharts';
 
 // const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red'];
 
@@ -118,20 +118,17 @@ const AdminHome = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row  mt-10">
+            <div className=" bg-white mx-4 md:mx-10 lg:mx-6 ">
+            <div className="w-full flex flex-col lg:flex-row lg:gap-4 mt-6 md:mt-8 lg:mt-10 py-6 md:py-8 lg:py-10">
                 {/* bar chart */}
-                <div className="w-1/2">
+                <div className="w-full lg:w-1/2 h-72 -ml-6 lg:-ml-4">
+                <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         className=""
                         width={500}
                         height={300}
                         data={chartData}
-                        margin={{
-                            top: 20,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}
+                        
                     >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="category" />
@@ -142,10 +139,11 @@ const AdminHome = () => {
                             ))}
                         </Bar>
                     </BarChart>
+                    </ResponsiveContainer>
                 </div>
                 {/* pi chart */}
-                <div className="w-1/2">
-
+                <div className="w-full lg:w-1/2 h-72">
+                <ResponsiveContainer width="100%" height="100%">
                     <PieChart width={400} height={400}>
                         <Pie
                             data={pieChartData}
@@ -163,7 +161,9 @@ const AdminHome = () => {
                         </Pie>
                         <Legend></Legend>
                     </PieChart>
+                    </ResponsiveContainer>
                 </div>
+            </div>
             </div>
         </div>
     );
