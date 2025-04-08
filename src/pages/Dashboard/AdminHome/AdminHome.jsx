@@ -82,8 +82,8 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <IoWallet className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">${stats.revenue}</h2>
-                                    <p className="text-base md:text-lg lg:text-base xl:text-xl ">Revenue</p>
+                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">${stats.revenue}</h2>
+                                    <p className="text-sm md:text-base  xl:text-lg ">Revenue</p>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +91,8 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <FaUsers className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">{stats.users}</h2>
-                                    <p className="text-base md:text-lg lg:text-base xl:text-xl ">Customers</p>
+                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">{stats.users}</h2>
+                                    <p className="text-sm md:text-base  xl:text-lg">Customers</p>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +100,8 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <MdMenuBook className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">{stats.menuItems}</h2>
-                                    <p className="text-base md:text-lg lg:text-base xl:text-xl ">Menus</p>
+                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">{stats.menuItems}</h2>
+                                    <p className="text-sm md:text-base  xl:text-lg ">Menus</p>
                                 </div>
                             </div>
                         </div>
@@ -109,8 +109,8 @@ const AdminHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <FaTruck className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl lg:text-2xl xl:text-4xl font-extrabold">{stats.orders}</h2>
-                                    <p className="text-base md:text-lg lg:text-base xl:text-xl ">Orders</p>
+                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">{stats.orders}</h2>
+                                    <p className="text-sm md:text-base  xl:text-lg ">Orders</p>
                                 </div>
                             </div>
                         </div>
@@ -118,52 +118,52 @@ const AdminHome = () => {
                 </div>
             </div>
 
-            <div className=" bg-white mx-4 md:mx-10 lg:mx-6 ">
-            <div className="w-full flex flex-col lg:flex-row lg:gap-4 mt-6 md:mt-8 lg:mt-10 py-6 md:py-8 lg:py-10">
-                {/* bar chart */}
-                <div className="w-full lg:w-1/2 h-72 -ml-6 lg:-ml-4">
-                <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                        className=""
-                        width={500}
-                        height={300}
-                        data={chartData}
-                        
-                    >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="category" />
-                        <YAxis />
-                        <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-                            {chartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={categoryColorMap[entry.category]} />
-                            ))}
-                        </Bar>
-                    </BarChart>
-                    </ResponsiveContainer>
+            <div className=" bg-white mx-4 md:mx-10 lg:mx-6 mt-6 md:mt-8 lg:mt-10">
+                <div className="w-full flex flex-col lg:flex-row lg:gap-4 py-6 md:py-8 lg:py-10">
+                    {/* bar chart */}
+                    <div className="w-full lg:w-1/2 h-72 -ml-6 lg:-ml-4">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart
+                                className=""
+                                width={500}
+                                height={300}
+                                data={chartData}
+
+                            >
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="category" />
+                                <YAxis />
+                                <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+                                    {chartData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={categoryColorMap[entry.category]} />
+                                    ))}
+                                </Bar>
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                    {/* pi chart */}
+                    <div className="w-full lg:w-1/2 h-72">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <PieChart width={400} height={400}>
+                                <Pie
+                                    data={pieChartData}
+                                    cx="50%"
+                                    cy="50%"
+                                    labelLine={false}
+                                    label={renderCustomizedLabel}
+                                    outerRadius={80}
+                                    fill="#8884d8"
+                                    dataKey="value"
+                                >
+                                    {pieChartData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={categoryColorMap[entry.name]} />
+                                    ))}
+                                </Pie>
+                                <Legend></Legend>
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
-                {/* pi chart */}
-                <div className="w-full lg:w-1/2 h-72">
-                <ResponsiveContainer width="100%" height="100%">
-                    <PieChart width={400} height={400}>
-                        <Pie
-                            data={pieChartData}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            label={renderCustomizedLabel}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                        >
-                            {pieChartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={categoryColorMap[entry.name]} />
-                            ))}
-                        </Pie>
-                        <Legend></Legend>
-                    </PieChart>
-                    </ResponsiveContainer>
-                </div>
-            </div>
             </div>
         </div>
     );

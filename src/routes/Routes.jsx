@@ -19,6 +19,7 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import ContactUs from "../pages/Contact/ContactUs";
+import AllPayments from "../pages/Dashboard/AllPayments/AllPayments";
 
 
 
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
             {
                 path: 'manageItems',
                 element: <AdminRoute><ManageItems></ManageItems></AdminRoute>,
+            },
+            {
+                path: 'allPayments',
+                element: <AdminRoute><AllPayments></AllPayments></AdminRoute>,
             },
             {
                 path: 'updateItem/:id',

@@ -86,6 +86,12 @@ const Dashboard = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
+                                                    <NavLink to='/dashboard/allPayments' className={`flex items-center gap-2`}>
+                                                    <IoWallet className="text-lg xl:text-xl" />
+                                                        <span className="">All Payments</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
                                                     <NavLink to='/dashboard/manageBookings' className={`flex items-center gap-2`}>
                                                         <FaBook className="text-lg xl:text-xl" />
                                                         <span className="">Manage Bookings</span>
