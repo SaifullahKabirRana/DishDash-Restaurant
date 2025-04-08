@@ -1,17 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import Title from "../../../components/Dashboard/Title";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { MdDone, MdDoneAll } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const AllPayments = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: allPayments = [] } = useQuery({
+    const { data: allPayments = [], refetch } = useQuery({
         queryKey: ['allPayments'],
         queryFn: async () => {
             const { data } = await axiosSecure.get('/allPayments');
             return (Array.isArray(data) ? data : []);
         }
-    })
+    });
+
+    // success status
+    const handleSuccess = async (id) => {
+        try {
+            await axiosSecure.patch(`/allPayments/${id}`, { status: 'success' });
+            toast.success('Payment accepted successfully!');
+            refetch();
+        }
+        catch (err) {
+            toast.error(err.code);
+        }
+    }
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
             <div className="px-3 md:ml-5 lg:ml-0 lg:px-10 xl:px-24 2xl:px-28 pb-8 md:pb-12 xl:pb-16 2xl:pb-20">
@@ -39,6 +53,7 @@ const AllPayments = () => {
                                             <th>Transaction Id</th>
                                             <th>Payment Date</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody className="">
@@ -64,8 +79,23 @@ const AllPayments = () => {
                                                     second: "2-digit",
 
                                                 })}</th>
-                                                <th className={` rounded-3xl text-center btn btn-sm capitalize my-3 lg:my-2 ${payment.status === 'pending' && 'bg-[#fcd059b7]'}`}>
+                                                <th className={` rounded-3xl text-center btn btn-sm capitalize my-4  ${payment.status === 'pending' && 'bg-[#fcd059b7]'} 
+                                                ${payment.status === 'success' && 'bg-[#4cb688bb]'}`}>
                                                     {payment.status}
+                                                </th>
+                                                <th className="text-center">
+                                                    {
+                                                        payment.status === 'success' ?
+                                                            <div className="btn btn-sm xl:btn-md btn-circle bg-[#287855] text-white">
+                                                                <MdDoneAll className="text-xl font-bold" />
+                                                            </div>
+                                                            :
+                                                            <div
+                                                                onClick={() => handleSuccess(payment._id)}
+                                                                className="btn btn-sm xl:btn-md btn-circle bg-[#80E2B7] text-white">
+                                                                <MdDone className="text-xl font-bold" />
+                                                            </div>
+                                                    }
                                                 </th>
                                             </tr>)
                                         }
