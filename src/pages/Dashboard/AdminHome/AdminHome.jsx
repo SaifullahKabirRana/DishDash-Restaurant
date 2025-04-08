@@ -5,10 +5,17 @@ import { useQuery } from '@tanstack/react-query'
 import { FaTruck, FaUsers } from "react-icons/fa6";
 import { MdMenuBook } from "react-icons/md";
 
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, Legend } from 'recharts';
 
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+// const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red'];
 
+const categoryColorMap = {
+    salad: '#00C49F',
+    pizza: '#0088FE',
+    soup: '#FFBB28',
+    dessert: '#FF8042',
+    drinks: 'red',
+}
 
 const AdminHome = () => {
     const { user } = useAuth();
@@ -43,6 +50,24 @@ const AdminHome = () => {
 
         return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
     };
+
+    // custom shape fot the pie chart
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+        return (
+            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+                {`${(percent * 100).toFixed(0)}%`}
+            </text>
+        );
+    };
+
+    const pieChartData = chartData.map(data => {
+        return { name: data.category, value: data.totalRevenue }
+    })
 
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
@@ -92,10 +117,12 @@ const AdminHome = () => {
                     </div>
                 </div>
             </div>
-            {/* bar chart */}
-            <div className="flex">
+
+            <div className="flex flex-col lg:flex-row  mt-10">
+                {/* bar chart */}
                 <div className="w-1/2">
                     <BarChart
+                        className=""
                         width={500}
                         height={300}
                         data={chartData}
@@ -111,10 +138,31 @@ const AdminHome = () => {
                         <YAxis />
                         <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
                             {chartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % 6]} />
+                                <Cell key={`cell-${index}`} fill={categoryColorMap[entry.category]} />
                             ))}
                         </Bar>
                     </BarChart>
+                </div>
+                {/* pi chart */}
+                <div className="w-1/2">
+
+                    <PieChart width={400} height={400}>
+                        <Pie
+                            data={pieChartData}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                        >
+                            {pieChartData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={categoryColorMap[entry.name]} />
+                            ))}
+                        </Pie>
+                        <Legend></Legend>
+                    </PieChart>
                 </div>
             </div>
         </div>
