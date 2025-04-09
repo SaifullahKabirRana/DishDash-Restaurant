@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import profile from '../assets/assets/profile.png'
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";

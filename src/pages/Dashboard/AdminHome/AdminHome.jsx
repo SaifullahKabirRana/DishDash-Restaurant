@@ -21,11 +21,11 @@ const AdminHome = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: stats = [] } = useQuery({
+    const { data: stats = {} } = useQuery({
         queryKey: ['admin-stats'],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/admin-stats`);
-            return data || [];
+            return data;
         }
     });
 

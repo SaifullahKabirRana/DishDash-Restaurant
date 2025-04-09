@@ -2,10 +2,20 @@ import { MdMenuBook } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import { IoWallet } from "react-icons/io5";
 import { FaBook, FaTruck } from "react-icons/fa6";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UserHome = () => {
     const { user } = useAuth();
-    console.log(user, 'userhome');
+    const axiosSecure = useAxiosSecure();
+
+    const { data: stats = {} } = useQuery({
+        queryKey: ['user-stats', user?.email],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get(`/user-stats/${user?.email}`)
+            return data;
+        }
+    })
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
             <div className="px-4 md:px-10 lg:px-6 pt-5 md:pt-6 xl:pt-10">
@@ -19,7 +29,7 @@ const UserHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <IoWallet className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">0</h2>
+                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">${stats.totalPayments}</h2>
                                     <p className="text-sm md:text-base  xl:text-lg ">Payments</p>
                                 </div>
                             </div>
@@ -37,7 +47,7 @@ const UserHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <MdMenuBook className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">0</h2>
+                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">{stats.totalMenuItems}</h2>
                                     <p className="text-sm md:text-base  xl:text-lg ">Menus</p>
                                 </div>
                             </div>
@@ -46,7 +56,7 @@ const UserHome = () => {
                             <div className="flex items-center justify-center gap-3 xl:gap-4 text-white inter py-4 md:py-6 lg:py-7 xl:py-10">
                                 <FaTruck className="text-3xl md:text-4xl lg:text-3xl xl:text-6xl" />
                                 <div>
-                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">0</h2>
+                                    <h2 className="text-xl md:text-2xl  xl:text-3xl font-extrabold">{stats.orders}</h2>
                                     <p className="text-sm md:text-base  xl:text-lg ">Orders</p>
                                 </div>
                             </div>
