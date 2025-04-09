@@ -119,8 +119,29 @@ export default function Navbar() {
 
                             <span className="absolute min-w-[18px] min-h-4 -top-1 -left-1 text-center  text-[11px] text-black bg-red-500 rounded-full font-bold">{cart.length}</span>
                         </Link>
+                        {/* user profile */}
                         <div>
-                            <img className="w-10 h-9" src={profile} alt="" />
+                            {
+                                user && isAdmin && <Link to='/dashboard/adminHome'>
+                                    <img
+                                        referrerPolicy='no-referrer'
+                                        className="w-9 h-9 rounded-full border border-[#bebebe] "
+                                        src={user?.photoURL || "https://i.ibb.co.com/TMD7HPzq/abstract-user-flat-4.webp"}
+                                        alt="User Profile Photo"
+                                    />
+                                </Link>
+                            }
+                            {
+                                user && !isAdmin && <Link to='/dashboard/userHome'>
+                                    <img
+                                        referrerPolicy='no-referrer'
+                                        className="w-9 h-9 rounded-full border border-[#bebebe] "
+                                        src={user?.photoURL || "https://i.ibb.co.com/TMD7HPzq/abstract-user-flat-4.webp"}
+                                        alt="User Profile Photo"
+                                    />
+                                </Link>
+                            }
+
                         </div>
 
                     </div>
