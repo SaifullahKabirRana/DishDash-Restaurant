@@ -10,10 +10,10 @@ import slide1 from '../../assets/assets/home/slide1.jpg'
 import slide2 from '../../assets/assets/home/slide2.jpg'
 import slide3 from '../../assets/assets/home/slide3.jpg'
 import slide4 from '../../assets/assets/home/slide4.jpg'
-import slide5 from '../../assets/assets/menu/Burger.png'
-import slide6 from '../../assets/assets/home/biriyani.png'
-import slide7 from '../../assets/assets/home/chicken.png'
-import slide8 from '../../assets/assets/home/meat.png'
+import slide5 from '../../assets/assets/menu/Burger.webp'
+import slide6 from '../../assets/assets/home/biriyani.webp'
+import slide7 from '../../assets/assets/home/chicken.webp'
+import slide8 from '../../assets/assets/home/meat.webp'
 
 import SectionTitle from '../SectionTitle';
 
