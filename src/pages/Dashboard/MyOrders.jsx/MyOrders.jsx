@@ -32,10 +32,9 @@ const MyOrders = () => {
         <div className="min-h-screen bg-[#F3F3F3] py-8 md:py-12">
             <div className="px-4 md:px-8 lg:px-12 xl:px-20 2xl:px-28">
                 <Title
-                    subHeading="---Manage Orders---"
-                    heading="ALL ORDERS"
-                    subHeadingClass="text-gray-500"
-                    headingClass="text-3xl font-bold text-gray-800"
+                    subHeading="---Enjoy---"
+                    heading="MY ORDERS"
+                    
                 />
 
                 {payments.length === 0 ? (
@@ -44,7 +43,7 @@ const MyOrders = () => {
                     </div>
                 ) : (
                     <motion.div
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"
+                        className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 mt-10"
                         initial="hidden"
                         animate="visible"
                         variants={{
