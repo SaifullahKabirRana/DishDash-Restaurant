@@ -12,6 +12,7 @@ const PaymentHistory = () => {
         queryKey: ['payments', user?.email],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/payments/${user?.email}`);
+            console.log(data, 'history');
             return (Array.isArray(data) ? data : []);
         }
     })
@@ -64,7 +65,7 @@ const PaymentHistory = () => {
 
                                                 })}</th>
                                                 <th className={` rounded-3xl text-center btn btn-sm capitalize my-3 lg:my-2 ${payment.status === 'pending' && 'bg-[#fcd059b7]'}
-                                                ${payment.status === 'success' && 'bg-[#4cb688bb]'}`}>
+                                                ${payment.status === 'success' && 'bg-[#16a34a]'}`}>
                                                     {payment.status}
                                                 </th>
                                             </tr>)

@@ -80,13 +80,13 @@ const AllPayments = () => {
 
                                                 })}</th>
                                                 <th className={` rounded-3xl text-center btn btn-sm capitalize my-4  ${payment.status === 'pending' && 'bg-[#fcd059b7]'} 
-                                                ${payment.status === 'success' && 'bg-[#4cb688bb]'}`}>
+                                                ${payment.status === 'success' && 'bg-[#16a34a]'}`}>
                                                     {payment.status}
                                                 </th>
                                                 <th className="text-center">
                                                     {
                                                         payment.status === 'success' ?
-                                                            <div className="btn btn-sm xl:btn-md btn-circle bg-[#287855] text-white">
+                                                            <div className="btn btn-sm xl:btn-md btn-circle bg-[#16a34a] text-white">
                                                                 <MdDoneAll className="text-xl font-bold" />
                                                             </div>
                                                             :

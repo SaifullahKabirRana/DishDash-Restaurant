@@ -21,6 +21,7 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import ContactUs from "../pages/Contact/ContactUs";
 import AllPayments from "../pages/Dashboard/AllPayments/AllPayments";
 import AllOrders from "../pages/Dashboard/AllOrders/AllOrders";
+import MyOrders from "../pages/Dashboard/MyOrders.jsx/MyOrders";
 
 
 
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path: 'userHome',
                 element: <UserHome></UserHome>,
+            },
+            {
+                path: 'myOrders',
+                element: <MyOrders />,
             },
             {
                 path: 'cart',

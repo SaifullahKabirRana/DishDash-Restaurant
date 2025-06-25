@@ -1,33 +1,26 @@
-import Title from "../../../components/Dashboard/Title";
 import { useQuery } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { IoCalendarOutline, IoCheckmarkDoneCircle } from "react-icons/io5";
+import Title from "../../../components/Dashboard/Title";
 import { LuClipboardList } from "react-icons/lu";
-import { MdLocationPin, MdEmail, MdPhone, MdOutlinePayment } from "react-icons/md";
-import { IoCheckmarkDoneCircle, IoCalendarOutline } from "react-icons/io5";
+import { MdEmail, MdLocationPin, MdOutlinePayment, MdPhone } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const AllOrders = () => {
+const MyOrders = () => {
+
+    const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: allPayments = [], refetch } = useQuery({
-        queryKey: ["allPayments"],
+    const { data: payments = [] } = useQuery({
+        queryKey: ['payments', user?.email],
         queryFn: async () => {
-            const { data } = await axiosSecure.get("/allPayments");
-            return Array.isArray(data) ? data : [];
-        },
-    });
-
-    const handleSuccess = async (id) => {
-        try {
-            await axiosSecure.patch(`/allPayments/${id}`, { status: "success" });
-            toast.success("Payment accepted successfully!");
-            refetch();
-        } catch (err) {
-            toast.error(err.code);
+            const { data } = await axiosSecure.get(`/payments/${user?.email}`);
+            console.log(data, 'history');
+            return (Array.isArray(data) ? data : []);
         }
-    };
+    })
 
     // Animation variants
     const cardVariants = {
@@ -45,7 +38,7 @@ const AllOrders = () => {
                     headingClass="text-3xl font-bold text-gray-800"
                 />
 
-                {allPayments.length === 0 ? (
+                {payments.length === 0 ? (
                     <div className="text-center py-20">
                         <p className="text-gray-500 text-lg">No orders found</p>
                     </div>
@@ -62,7 +55,7 @@ const AllOrders = () => {
                             }
                         }}
                     >
-                        {allPayments.map((payment) => (
+                        {payments.map((payment) => (
                             <motion.div
                                 key={payment._id}
                                 variants={cardVariants}
@@ -152,10 +145,9 @@ const AllOrders = () => {
                                             <motion.button
                                                 whileHover={{ scale: 1.03 }}
                                                 whileTap={{ scale: 0.98 }}
-                                                onClick={() => handleSuccess(payment._id)}
                                                 className="bg-gradient-to-r from-[#D1A054] to-[#f3c26a] text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"
                                             >
-                                                Accept Order
+                                                Pending Order
                                             </motion.button>
                                         ) : (
                                             <span className="bg-green-50 text-green-700 py-2 px-4 rounded-lg font-semibold text-sm flex items-center gap-2">
@@ -174,4 +166,4 @@ const AllOrders = () => {
     );
 };
 
-export default AllOrders;
+export default MyOrders;
