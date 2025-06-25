@@ -43,7 +43,10 @@ const AllOrders = () => {
                                 <h3 className="font-semibold text-lg text-[#333]">
                                     {payment.name}
                                 </h3>
-                                <p className="text-sm text-gray-600">{payment.email}</p>
+                                <p className="text-sm text-gray-600"> 📧 {payment.email}</p>
+                                <p className="text-sm text-gray-600">
+                                    📞 <span className="font-medium"></span> {payment.phone || "N/A"}
+                                </p>
                             </div>
 
                             <div className="space-y-1">

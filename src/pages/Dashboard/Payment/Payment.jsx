@@ -15,7 +15,7 @@ const Payment = () => {
             <h2 className="uppercase text-[#151515] text-xl md:text-2xl xl:text-3xl text-center">Payment</h2>
             <div className="mt-16">
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm address={address}></CheckoutForm>
+                    <CheckoutForm address={address} phone={phone}></CheckoutForm>
                 </Elements>
             </div>
         </div>

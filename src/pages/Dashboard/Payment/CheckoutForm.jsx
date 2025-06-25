@@ -6,7 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({address}) => {
+const CheckoutForm = ({ address, phone }) => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
@@ -20,7 +20,8 @@ const CheckoutForm = ({address}) => {
     const navigate = useNavigate();
 
     console.log(cart, 'cart from checkout');
-    console.log(address, 'address ');
+    console.log(address, 'address from props');
+    console.log(phone, 'phone from props');
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -90,15 +91,16 @@ const CheckoutForm = ({address}) => {
                     date: new Date(), //utc date convert, use moment js to convert
                     cartIds: cart.map(item => item._id),
                     menuItemIds: cart.map(item => item.menuId),
-                    itemName: cart.map(item=> item?.name),
-                    category : cart.map(item => item?.category),
+                    itemName: cart.map(item => item?.name),
+                    category: cart.map(item => item?.category),
                     address: address || 'N/A',
+                    phone: phone || 'N/A',
                     status: 'pending',
                 }
                 try {
                     const { data } = await axiosSecure.post(`/payments`, payment)
                     refetch();
-                    if(data?.paymentResult?.insertedId){
+                    if (data?.paymentResult?.insertedId) {
                         Swal.fire({
                             position: "center",
                             icon: "success",
@@ -106,8 +108,8 @@ const CheckoutForm = ({address}) => {
                             text: "Thank you for your purchase. Your payment has been processed successfully.",
                             showConfirmButton: false,
                             timer: 2000
-                          });
-                          navigate('/dashboard/paymentHistory')
+                        });
+                        navigate('/dashboard/paymentHistory')
                     }
                 }
                 catch (err) {
