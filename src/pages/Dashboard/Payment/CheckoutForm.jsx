@@ -6,7 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({address}) => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
@@ -19,6 +19,8 @@ const CheckoutForm = () => {
     const totalPrice = parseFloat(cart.reduce((total, item) => total + item.price, 0).toFixed(2));
     const navigate = useNavigate();
 
+    console.log(cart, 'cart from checkout');
+    console.log(address, 'address ');
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -88,6 +90,9 @@ const CheckoutForm = () => {
                     date: new Date(), //utc date convert, use moment js to convert
                     cartIds: cart.map(item => item._id),
                     menuItemIds: cart.map(item => item.menuId),
+                    itemName: cart.map(item=> item?.name),
+                    category : cart.map(item => item?.category),
+                    address: address || 'N/A',
                     status: 'pending',
                 }
                 try {

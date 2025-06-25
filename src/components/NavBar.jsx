@@ -6,7 +6,7 @@ import useAdmin from "../hooks/useAdmin";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const { user, loading, logOut } = useAuth();
+    const { user,  logOut } = useAuth();
     const [isAdmin] = useAdmin();
     const [cart] = useCart();
 
@@ -31,9 +31,9 @@ export default function Navbar() {
                 <li><NavLink to='/login'>SIGN IN</NavLink></li>
         }
     </>
-    if (loading) {
-        return;
-    }
+    // if (loading) {
+    //     return;
+    // }
 
     return (
         <nav className="text-white fixed  z-50 w-full bg-[#15151580] uppercase">
