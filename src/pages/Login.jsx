@@ -9,9 +9,10 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import { TbFidgetSpinner } from 'react-icons/tb';
 
 const Login = () => {
-    const { signIn } = useAuth();
+    const { signIn, loading, setLoading } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [captchaInput, setCaptchaInput] = useState("");
     const [captchaValid, setCaptchaValid] = useState(null);
@@ -34,6 +35,7 @@ const Login = () => {
         setLoginError('');
 
         try {
+            setLoading(true);
             await signIn(email, password);
             toast.success('SignIn Successfully');
             navigate(location?.state?.from?.pathname || "/", { replace: true });
@@ -41,6 +43,7 @@ const Login = () => {
         catch (err) {
             console.log(err);
             setLoginError('password not match!');
+            setLoading(false);
         }
     }
 
@@ -136,11 +139,15 @@ const Login = () => {
                                     {captchaValid === false && <p className="text-red-500 text-xs pl-2 mt-1">Invalid Captcha, please try again.</p>}
                                 </div>
                                 <div className={`mt-5 xl:mt-6 ${!captchaValid ? "cursor-not-allowed" : ""}`}>
-                                    <input type="submit" value="Sign In"
-                                        disabled={!captchaValid}
+                                    
+                                    <button
+                                        disabled={!captchaValid && loading}
+                                        type="submit"
                                         style={{ backgroundColor: captchaValid ? "#D1A054" : "#D1A054B3" }}
                                         className={`btn w-full text-sm xl:text-base font-bold tracking-wide text-white capitalize rounded-lg focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50`}
-                                    />
+                                    >
+                                        {loading ? <TbFidgetSpinner className='animate-spin m-auto text-xl' /> : 'Sign In'}
+                                    </button>
                                 </div>
                             </form>
 

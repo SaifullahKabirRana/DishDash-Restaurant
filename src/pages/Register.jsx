@@ -2,7 +2,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import bgImg from '../assets/assets/others/authentication.png'
 import loginImg from '../assets/assets/others/authentication2.png'
-
+import { TbFidgetSpinner } from "react-icons/tb";
 import { useState } from 'react';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import SocialLogin from '../components/SocialLogin';
@@ -10,9 +10,12 @@ import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 import useAxiosCommon from '../hooks/useAxiosCommon';
+import { imageUpload } from '../api/utils';
+
+
 const Register = () => {
     const axiosCommon = useAxiosCommon();
-    const { createUser, updateUserProfile, setUser } = useAuth();
+    const { createUser, updateUserProfile, setUser, loading, setLoading } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [registerError, setRegisterError] = useState('');
     const navigate = useNavigate();
@@ -24,9 +27,11 @@ const Register = () => {
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
-        const photo = form.photo.value;
         const password = form.password.value;
-        console.log(name, email, photo, password);
+        const image = form.image.files[0];
+        console.log(name, email, password);
+
+
 
         // Password Authentication
         if (password.length < 6) {
@@ -42,27 +47,31 @@ const Register = () => {
         setRegisterError('');
 
         try {
-
+            setLoading(true);
+            // 1. Upload image and get image url
+            const image_url = await imageUpload(image);
+            console.log(image_url, 'photo');
             const result = await createUser(email, password);
             console.log(result.user);
-            updateUserProfile(name, photo);
+            updateUserProfile(name, image_url);
 
             // save user info in db 
             const userInfo = {
                 name,
                 email,
-                photo
+                photo: image_url
             }
             await axiosCommon.post('/users', userInfo);
 
             // Optimistic UI Update
-            setUser({ ...result?.user, photoURL: photo, displayName: name });
+            setUser({ ...result?.user, photoURL: image_url, displayName: name });
             toast.success('SignUp Successfully');
             navigate(location?.state?.from?.pathname || "/", { replace: true });
         }
         catch (err) {
             console.log(err);
             setRegisterError(err.code);
+            setLoading(false);
         }
     }
     return (
@@ -110,20 +119,24 @@ const Register = () => {
                                         className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm placeholder:font-normal"
                                     />
                                 </div>
-                                <div className='mt-3 xl:mt-4'>
+                                <div className="mt-3 xl:mt-4">
                                     <label
-                                        htmlFor="name"
+                                        htmlFor="image"
                                         className="block text-sm xl:text-base  text-[#444444] font-semibold"
                                     >
-                                        Photo URL
+                                        Upload Image
                                     </label>
+
                                     <input
-                                        type="url"
-                                        name='photo'
-                                        placeholder='Photo URL'
-                                        className="block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm placeholder:font-normal"
+                                        required
+                                        type="file"
+                                        id="image"
+                                        name="image"
+                                        accept="image/*"
+                                        className="block mt-2 w-full text-sm text-gray-500 file:mr-4  file:px-4 file:ml-0 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#D1A054] file:text-white hover:file:bg-[#b9853f]  cursor-pointer font-medium bg-white border-[#D0D0D0] rounded-lg  focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-sm placeholder:font-normal"
                                     />
                                 </div>
+
                                 <div className="mt-3 xl:mt-4">
                                     <div className="flex items-center justify-between">
                                         <label
@@ -154,9 +167,13 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div className="mt-5 xl:mt-6">
-                                    <input type="submit" value="Sign Up"
+                                    <button
+                                        disabled={loading}
+                                        type="submit"
                                         className={`btn w-full text-sm xl:text-base font-bold tracking-wide bg-[#D1A054] text-white capitalize rounded-lg focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50`}
-                                    />
+                                    >
+                                        {loading ? <TbFidgetSpinner className='animate-spin m-auto text-xl' /> : 'Sign Up'}
+                                    </button>
                                 </div>
                             </form>
 
