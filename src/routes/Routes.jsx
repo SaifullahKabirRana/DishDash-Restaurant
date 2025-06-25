@@ -20,6 +20,7 @@ import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import ContactUs from "../pages/Contact/ContactUs";
 import AllPayments from "../pages/Dashboard/AllPayments/AllPayments";
+import AllOrders from "../pages/Dashboard/AllOrders/AllOrders";
 
 
 
@@ -94,6 +95,10 @@ export const router = createBrowserRouter([
             {
                 path: 'allPayments',
                 element: <AdminRoute><AllPayments></AllPayments></AdminRoute>,
+            },
+            {
+                path: 'allOrders',
+                element: <AdminRoute><AllOrders /></AdminRoute>,
             },
             {
                 path: 'updateItem/:id',

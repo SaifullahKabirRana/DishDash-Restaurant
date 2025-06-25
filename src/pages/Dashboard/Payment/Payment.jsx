@@ -8,6 +8,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 const Payment = () => {
     const location = useLocation();
     const address = location.state?.address || "";
+    const phone = location.state?.phone || "";
 
     return (
         <div className="px-3 md:ml-5 lg:ml-0 lg:px-10 xl:px-24 2xl:px-28 py-56">

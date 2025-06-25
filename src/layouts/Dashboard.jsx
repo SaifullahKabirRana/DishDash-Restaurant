@@ -4,7 +4,8 @@ import { useState } from "react";
 import { HiHome } from "react-icons/hi2";
 import { FaCalendarDays } from "react-icons/fa6";
 import { IoWallet } from "react-icons/io5";
-import { FaBook, FaListUl, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaListUl, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { LuShoppingBasket } from "react-icons/lu";
 import { PiListStarFill } from "react-icons/pi";
 import { BsCalendar2CheckFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -87,14 +88,14 @@ const Dashboard = () => {
                                                 </li>
                                                 <li>
                                                     <NavLink to='/dashboard/allPayments' className={`flex items-center gap-2`}>
-                                                    <IoWallet className="text-lg xl:text-xl" />
+                                                        <IoWallet className="text-lg xl:text-xl" />
                                                         <span className="">All Payments</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to='/dashboard/manageBookings' className={`flex items-center gap-2`}>
-                                                        <FaBook className="text-lg xl:text-xl" />
-                                                        <span className="">Manage Bookings</span>
+                                                    <NavLink to='/dashboard/allOrders' className={`flex items-center gap-2`}>
+                                                        <LuShoppingBasket className="text-lg xl:text-xl" />
+                                                        <span className="">All Orders</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
@@ -113,9 +114,9 @@ const Dashboard = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to='/dashboard/reservation' className={`flex items-center gap-2`}>
-                                                        <FaCalendarDays className="text-lg xl:text-xl" />
-                                                        <span className="">Reservation</span>
+                                                    <NavLink to='/dashboard/myOrders' className={`flex items-center gap-2`}>
+                                                        <LuShoppingBasket className="text-lg xl:text-xl" />
+                                                        <span className="">My Orders</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
@@ -130,18 +131,18 @@ const Dashboard = () => {
                                                         <span className="">My Cart</span>
                                                     </NavLink>
                                                 </li>
-                                                <li>
+                                                {/* <li>
                                                     <NavLink to='/dashboard/review' className={`flex items-center gap-2`}>
                                                         <PiListStarFill className="text-lg xl:text-xl" />
                                                         <span className="">Add Review</span>
                                                     </NavLink>
-                                                </li>
-                                                <li>
+                                                </li> */}
+                                                {/* <li>
                                                     <NavLink to='/dashboard/bookings' className={`flex items-center  gap-2`}>
                                                         <BsCalendar2CheckFill className="text-lg xl:text-xl" />
                                                         <span className="">My Booking</span>
                                                     </NavLink>
-                                                </li>
+                                                </li> */}
                                             </>
                                     }
 

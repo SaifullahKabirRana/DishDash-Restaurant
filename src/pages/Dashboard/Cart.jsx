@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 const Cart = () => {
     const [cart, refetch] = useCart();
     const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
     const navigate = useNavigate();
     const totalPrice = parseFloat(cart.reduce((total, item) => total + item.price, 0).toFixed(2));
     console.log(totalPrice, 'cart');
@@ -47,14 +48,14 @@ const Cart = () => {
     }
 
     const handleProceed = () => {
-        if (!address) {
-            return toast.error("Please enter your address!");
+        if (!address || !phone) {
+            return toast.error("Please provide both phone and address!");
         }
 
         document.getElementById("checkout_modal").close();
-        console.log("Address to send:", address);
-        navigate("/dashboard/payment", { state: { address } });
+        navigate("/dashboard/payment", { state: { address, phone } });
     };
+
 
     return (
         <div className=" min-h-screen bg-[#F3F3F3]">
@@ -77,7 +78,7 @@ const Cart = () => {
 
                             <dialog id="checkout_modal" className="modal modal-bottom sm:modal-middle">
                                 <div className="modal-box rounded-t-2xl md:rounded-2xl bg-white shadow-xl px-6 py-8 md:px-10 md:py-10 w-full max-w-md">
-                                    <h3 className="font-bold text-xl text-center mb-6 text-[#D1A054]">Enter Delivery Address</h3>
+                                    <h3 className="font-bold text-xl text-center mb-6 text-[#D1A054]"> Delivery Information</h3>
 
                                     <form
                                         onSubmit={(e) => {
@@ -86,6 +87,15 @@ const Cart = () => {
                                         }}
                                         className="flex flex-col gap-4"
                                     >
+                                        <input
+                                            type="tel"
+                                            pattern="[0-9]{11}"
+                                            maxLength={11}
+                                            placeholder="e.g. 018xxxxxxxx"
+                                            required
+                                            onChange={(e) => setPhone(e.target.value)}
+                                            className="border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring  w-full"
+                                        />
                                         <textarea
                                             required
                                             placeholder="Your full address here..."
