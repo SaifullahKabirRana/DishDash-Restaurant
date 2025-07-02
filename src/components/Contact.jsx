@@ -7,11 +7,44 @@ const Contact = () => {
             <div className="min-w-full sm:min-w-[550px] md:min-w-[650px] lg:min-w-[820px] xl:min-w-[1020px] 2xl:min-w-[1320px] px-6 md:px-0">
                 <div className="bg-[#151515]">
                     <div className="text-center py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 2xl:py-24">
-                        <h3 className="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl cinzel font-semibold">Call Us: +880192345678910</h3>
+                        <h3 className="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl cinzel font-semibold">
+                            Call Us: +880192345678910
+                        </h3>
+
                         <div className="flex justify-center gap-3 md:gap-5 xl:gap-6 text-white text-xl md:text-2xl xl:text-3xl mt-3 md:mt-5 xl:mt-8">
-                        <IoLogoWhatsapp className="" />
-                        <FaFacebookMessenger />
-                        <FaInstagram />
+
+                            {/* WhatsApp */}
+                            <a
+                                href="https://wa.me"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="WhatsApp"
+                                className="hover:text-green-400 transition duration-300"
+                            >
+                                <IoLogoWhatsapp />
+                            </a>
+
+                            {/* Messenger */}
+                            <a
+                                href="https://www.messenger.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Messenger"
+                                className="hover:text-blue-400 transition duration-300"
+                            >
+                                <FaFacebookMessenger />
+                            </a>
+
+                            {/* Instagram */}
+                            <a
+                                href="https://www.instagram.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram"
+                                className="hover:text-pink-400 transition duration-300"
+                            >
+                                <FaInstagram />
+                            </a>
                         </div>
                     </div>
                 </div>

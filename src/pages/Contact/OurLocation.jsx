@@ -22,7 +22,7 @@ const OurLocation = () => {
                                 <div className="border border-t-0 border-[#E8E8E8]">
                                     <div className="bg-[#F3F3F3] mx-4 md:mx-3 lg:mx-4 xl:mx-6 mb-4 md:mb-3 lg:mb-4 xl:mb-6 py-5 lg:py-6  2xl:py-10 pb-6 md:pb-8 lg:pb-10 xl:pb-14 inter text-center ">
                                         <h2 className=" text-[#151515] text-xl xl:text-2xl uppercase font-medium">PHONE</h2>
-                                        <p className="text-[#444444] text-sm xl:text-base pt-2 xl:pt-4">+38 (012) 34 56 789</p>
+                                        <p className="text-[#444444] text-sm xl:text-base pt-2 xl:pt-4">+880 123456789</p>
                                     </div>
                                 </div>
                             </div>
@@ -50,8 +50,8 @@ const OurLocation = () => {
                                 <div className="border border-t-0 border-[#E8E8E8]">
                                     <div className="bg-[#F3F3F3] mx-4 md:mx-3 lg:mx-4 xl:mx-6 mb-4 md:mb-3 lg:mb-4 xl:mb-6 py-4 lg:py-6 2xl:py-8 xl:pb-10    inter text-center ">
                                         <h2 className=" text-[#151515] text-xl md:text-lg lg:text-xl xl:text-2xl uppercase font-medium">WORKING HOURS</h2>
-                                        <p className="text-[#444444] text-sm xl:text-base pt-1 xl:pt-2">Mon - Fri: 08:00 - 22:00</p>
-                                        <p className="text-[#444444] text-sm xl:text-base">Sat - Sun: 10:00 - 23:00</p>
+                                        <p className="text-[#444444] text-sm xl:text-base pt-1 xl:pt-2">Mun - Thu: 08:00am - 10:00pm </p>
+                                        <p className="text-[#444444] text-sm xl:text-base">Sat - Sun: 10:00am - 11:00pm</p>
                                     </div>
                                 </div>
                             </div>

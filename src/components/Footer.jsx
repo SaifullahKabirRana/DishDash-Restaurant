@@ -14,10 +14,10 @@ const Footer = () => {
                     <div className="py-14 md:py-16 lg:py-24  text-center">
                         <h3 className="text-white text-lg md:text-2xl xl:text-3xl font-medium ">CONTACT US</h3>
                         <div className="text-white opacity-95 text-sm md:text-base xl:text-lg mt-3 md:mt-4 xl:mt-6 ">
-                            <p className=" ">123 ABS Street, Uni 21, Bangladesh</p>
-                            <p>+88 123456789</p>
-                            <p>Mon - Fri: 08:00 - 22:00</p>
-                            <p>Sat - Sun: 10:00 - 23:00</p>
+                            <p className=" ">2no Gate, Chittagong, Bangladesh</p>
+                            <p>+880 123456789</p>
+                            <p>Mun - Thu: 08:00am - 10:00pm </p>
+                            <p>Sat - Sun: 10:00am - 11:00pm</p>
                         </div>
                     </div>
                 </div>
