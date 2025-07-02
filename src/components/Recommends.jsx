@@ -1,62 +1,62 @@
 import SectionTitle from "./SectionTitle";
 import useMenu from "../hooks/useMenu";
-import toast from "react-hot-toast";
-import useAxiosSecure from "../hooks/useAxiosSecure";
-import useAuth from "../hooks/useAuth";
-import { useLocation, useNavigate } from "react-router-dom";
-import useCart from "../hooks/useCart";
-import Swal from "sweetalert2";
+// import toast from "react-hot-toast";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAuth from "../hooks/useAuth";
+// import { useLocation, useNavigate } from "react-router-dom";
+// import useCart from "../hooks/useCart";
+// import Swal from "sweetalert2";
 
 const Recommends = () => {
     const [menu] = useMenu();
     console.log(menu, 'menu home');
     const recommends = menu.filter(item => item.category === 'offered');
     console.log('offered item', recommends);
-    const axiosSecure = useAxiosSecure();
-    const { user } = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
-    const [, refetch] = useCart();
+    // const axiosSecure = useAxiosSecure();
+    // const { user } = useAuth();
+    // const navigate = useNavigate();
+    // const location = useLocation();
+    // const [, refetch] = useCart();
 
-    const handleAddToCart = async (food) => {
-        if (user && user?.email) {
-            // send cart item to the database
-            const cartItems = {
-                menuId: food._id,
-                email: user?.email,
-                name: food.name,
-                image: food.image,
-                category: food.category,
-                price: food.price
-            }
-            try {
-                await axiosSecure.post(`/carts`, cartItems);
-                // refetch cart to update the cart items count
-                await refetch();
-                toast.success('Item added in the cart');
+    // const handleAddToCart = async (food) => {
+    //     if (user && user?.email) {
+    //         // send cart item to the database
+    //         const cartItems = {
+    //             menuId: food._id,
+    //             email: user?.email,
+    //             name: food.name,
+    //             image: food.image,
+    //             category: food.category,
+    //             price: food.price
+    //         }
+    //         try {
+    //             await axiosSecure.post(`/carts`, cartItems);
+    //             // refetch cart to update the cart items count
+    //             await refetch();
+    //             toast.success('Item added in the cart');
 
-            }
-            catch (err) {
-                toast.error(err.code);
-            }
+    //         }
+    //         catch (err) {
+    //             toast.error(err.code);
+    //         }
 
-        }
-        else {
-            Swal.fire({
-                title: "You are not Logged In",
-                text: "Please login to add to the cart!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#D1A054",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, login!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/login', { state: { from: location } });
-                }
-            });
-        }
-    }
+    //     }
+    //     else {
+    //         Swal.fire({
+    //             title: "You are not Logged In",
+    //             text: "Please login to add to the cart!",
+    //             icon: "warning",
+    //             showCancelButton: true,
+    //             confirmButtonColor: "#D1A054",
+    //             cancelButtonColor: "#d33",
+    //             confirmButtonText: "Yes, login!"
+    //         }).then((result) => {
+    //             if (result.isConfirmed) {
+    //                 navigate('/login', { state: { from: location } });
+    //             }
+    //         });
+    //     }
+    // }
 
     return (
         <div>
@@ -65,7 +65,7 @@ const Recommends = () => {
                 heading={'CHEF RECOMMENDS'}
             ></SectionTitle>
             <div className="w-full flex justify-center">
-                <div className="max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[820px] xl:max-w-[1020px] 2xl:max-w-[1320px] px-6 md:px-0">
+                <div className="max-w-full sm:max-w-[550px] md:max-w-[650px] lg:max-w-[820px] xl:max-w-[1020px] 2xl:max-w-[1320px] px-2 md:px-0">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-3 xl:gap-6">
                         {
                             recommends.slice(0,3).map(menu =>
