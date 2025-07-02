@@ -19,9 +19,6 @@ const CheckoutForm = ({ address, phone }) => {
     const totalPrice = parseFloat(cart.reduce((total, item) => total + item.price, 0).toFixed(2));
     const navigate = useNavigate();
 
-    console.log(cart, 'cart from checkout');
-    console.log(address, 'address from props');
-    console.log(phone, 'phone from props');
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -110,7 +107,7 @@ const CheckoutForm = ({ address, phone }) => {
                             showConfirmButton: false,
                             timer: 2000
                         });
-                        navigate('/dashboard/paymentHistory')
+                        navigate('/dashboard/myOrders')
                     }
                 }
                 catch (err) {

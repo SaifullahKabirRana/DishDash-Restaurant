@@ -91,7 +91,7 @@ const Cart = () => {
                                             type="tel"
                                             pattern="[0-9]{11}"
                                             maxLength={11}
-                                            placeholder="e.g. 018xxxxxxxx"
+                                            placeholder="e.g. 01xxxxxxxxx"
                                             required
                                             onChange={(e) => setPhone(e.target.value)}
                                             className="border border-gray-200 rounded-md  focus:border-gray-200 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring  w-full"

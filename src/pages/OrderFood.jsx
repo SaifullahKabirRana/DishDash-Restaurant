@@ -20,16 +20,17 @@ const OrderFood = () => {
     const pizza = menu.filter(item => item.category === 'pizza');
     const salad = menu.filter(item => item.category === 'salad');
     const soup = menu.filter(item => item.category === 'soup');
-    const tabs = ["Salad", "Pizza", "Soup", "Dessert", "Drinks"];
+    const offered = menu.filter(item => item.category === 'offered');
+    const tabs = ["Salad", "Pizza", "Soup", "Dessert", "Drinks", 'Offered'];
     const tabContents = [
         <FoodCard key='salad' items={salad}></FoodCard>,
         <FoodCard key='pizza' items={pizza}></FoodCard>,
         <FoodCard key='soup' items={soup}></FoodCard>,
         <FoodCard key='dessert' items={dessert}></FoodCard>,
         <FoodCard key='drinks' items={drinks}></FoodCard>,
+        <FoodCard key='offered' items={offered}></FoodCard>,
         
     ];
-
 
     return (
         <div>

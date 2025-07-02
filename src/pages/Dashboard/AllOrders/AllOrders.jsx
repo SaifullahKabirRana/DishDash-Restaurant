@@ -29,6 +29,13 @@ const AllOrders = () => {
         }
     };
 
+    const sortedPayments = [...allPayments].sort((a, b) => {
+        if (a.status === "pending" && b.status !== "pending") return -1;
+        if (a.status !== "pending" && b.status === "pending") return 1;
+        return 0;
+    });
+
+
     // Animation variants
     const cardVariants = {
         hidden: { opacity: 0, y: 20 },
@@ -60,7 +67,7 @@ const AllOrders = () => {
                             }
                         }}
                     >
-                        {allPayments.map((payment) => (
+                        {sortedPayments.map((payment) => (
                             <motion.div
                                 key={payment._id}
                                 variants={cardVariants}
