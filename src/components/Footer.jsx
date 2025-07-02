@@ -30,10 +30,10 @@ const Footer = () => {
                                 <a href="https://www.facebook.com">
                                     <FaFacebookF />
                                 </a>
-                                <a href="https://www.instagram.com">
+                                <a href="https://www.instagram.com/dishdash321/">
                                     <FaInstagram />
                                 </a>
-                                <a href="https://x.com">
+                                <a href="https://x.com/ishidasrabon">
                                     <FaXTwitter />
                                 </a>
 

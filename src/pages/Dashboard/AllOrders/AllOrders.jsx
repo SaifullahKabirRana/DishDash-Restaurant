@@ -87,7 +87,7 @@ const AllOrders = () => {
                                             <div >
                                                 {
                                                     payment?.photo ?
-                                                        <img className="rounded-full w-[34px]" src={payment.photo} alt="" />
+                                                        <img referrerPolicy='no-referrer' className="rounded-full w-[34px]" src={payment.photo} alt="" />
                                                         :
                                                         <div className="bg-[#D1A054]/10 p-2 rounded-full">
                                                             <FaUser className="text-[#D1A054] text-lg" />

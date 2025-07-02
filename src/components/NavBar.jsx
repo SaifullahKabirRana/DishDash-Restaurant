@@ -43,7 +43,7 @@ export default function Navbar() {
         }
         {
             user ?
-                <li><button onClick={() => { logOut(); setIsOpen(false); }}>Sign Out</button></li>
+                <li><button className="uppercase" onClick={() => { logOut(); setIsOpen(false); }}>Sign Out</button></li>
                 :
                 <li><NavLink to='/login' onClick={() => setIsOpen(false)}>Sign In</NavLink></li>
         }

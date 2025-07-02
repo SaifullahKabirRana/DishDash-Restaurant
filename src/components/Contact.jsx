@@ -37,7 +37,7 @@ const Contact = () => {
 
                             {/* Instagram */}
                             <a
-                                href="https://www.instagram.com"
+                                href="https://www.instagram.com/dishdash321"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Instagram"
